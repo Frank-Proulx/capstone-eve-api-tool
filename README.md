@@ -1,4 +1,12 @@
-### Friday 2/18 activity log
+# Eve Online Market Tool
+
+#### By Frank Proulx
+
+#### A third party developer tool for Eve Online. This project is evolving but MVP will focus on buildling an out of game market interface that utilizes the Eve Swagger Interface api to provide the user detailed market data from throughout the game.
+
+
+### Research & Planning Log
+#### Friday 2/18
 
 8 - 8:25am: look over previous project directory containing test api calls - [https://github.com/Frank-Proulx/eve-tool-test](https://github.com/Frank-Proulx/eve-tool-test)
 
@@ -9,6 +17,8 @@
 10am - 12:10pm: Using Postman to make calls for the purpose of documenting routes here
 
 1:10pm - 2pm: Continue researching endpoints and documenting api calls and results
+
+2pm - 3pm: Looking into the "Universe" section of the api, lots of global info here and difficult to parse, added endpoints for category, group and type id's
 
 
 # Route documentation
@@ -220,3 +230,75 @@ sample result (shortened):
   ]
 }
 ```
+
+## Universe
+
+### **Category - this is a complicated area, looks like there is overlap with the market but it's two different systems that share information, it goes Category > Group > Type**
+
+https://esi.evetech.net/latest/universe/categories/?datasource=tranquility
+
+The above route provides a list of all category_id, which is actually pretty small, this result is the entire list:
+```
+[
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    14,
+    16,
+    17,
+    18,
+    20,
+    22,
+    23,
+    24,
+    25,
+    26,
+    29,
+    30,
+    32,
+    34,
+    35,
+    39,
+    40,
+    41,
+    42,
+    43,
+    46,
+    350001,
+    2100,
+    53,
+    54,
+    2107,
+    63,
+    65,
+    66,
+    49,
+    87,
+    91,
+    59
+]
+```
+
+
+
+
+
+
+
+
+## License
+
+[MIT](https://opensource.org/licenses/MIT)
+
+If you have any issues, questions, ideas or concerns, please reach out to me at my email and/or make a contribution to the code via GitHub.
+
+Copyright (c) 2022 Frank Proulx
