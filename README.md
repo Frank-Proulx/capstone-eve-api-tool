@@ -9,13 +9,16 @@
 10am - am: Using Postman to make calls for the purpose of documenting routes here
 
 
-### Route documentation
+# Route documentation
+
+Forge region_id = 10000002
+sample type_id = 19053
 
 Database of icons: img src="https://images.evetech.net/type/{type_id}/icon?size=64" or more likely "https://images.evetech.net/types/{type_id}/icon"
 
-#### Market
+## Market
 
-##### All items with adjusted and average price by type_id
+### **All items with adjusted and average price by type_id**
 
 https://esi.evetech.net/latest/markets/prices/?datasource=tranquility
 
@@ -34,7 +37,7 @@ Sample return (thousands of results):
   }
 ]
 ```
-##### Search buy, sell or all orders by region, page number required but defaults to 1
+### **Search buy, sell or all orders by region, page number required but defaults to 1**
 
 https://esi.evetech.net/latest/markets/{region_id}/orders/?datasource=tranquility&order_type=all&page=1 - all
 https://esi.evetech.net/latest/markets/{region_id}/orders/?datasource=tranquility&order_type=buy&page=1 - buy
@@ -73,9 +76,95 @@ Sample return (for all):
   }
 ]
 ```
-##### Search buy, sell or all orders by region, page number required but defaults to 1 - add type_id to search specific item
+### **Search buy, sell or all orders by region, page number required but defaults to 1 - add type_id to search specific item**
 
 https://esi.evetech.net/latest/markets/{region_id}/orders/?datasource=tranquility&order_type=all&page=1&type_id={type_id}
 
 Same results except specific to that type_id
 
+### **Search history by day for a specific item in a specific region**
+
+https://esi.evetech.net/latest/markets/{region_id}/history/?datasource=tranquility&type_id={type_id}
+
+Sample results (returns results from 1/1/21 till yesterday): 
+```
+[
+  {
+      "average": 54184827.59,
+      "date": "2021-01-01",
+      "highest": 60990000.0,
+      "lowest": 42500000.0,
+      "order_count": 50,
+      "volume": 58
+  },
+  {
+      "average": 51619024.39,
+      "date": "2021-01-02",
+      "highest": 58670000.0,
+      "lowest": 42730000.0,
+      "order_count": 30,
+      "volume": 41
+  }
+]
+```
+### **Return a list of type_ids for a particular region's market (less useful but perhaps for populating dropdowns or creating a 'show only available' toggle)**
+
+https://esi.evetech.net/latest/markets/{region_id}/types/?datasource=tranquility&page=1
+
+Sample results (1000 results per page):
+```
+[
+  43691,
+  32772,
+  32774,
+  32780,
+  32782,
+  32783,
+  18,
+  19,
+  20,
+  21,
+  22,
+  32792
+]
+```
+
+### **groups allow a search for all group ids (global), adding a market_group_id will provide info on that specific group, this is for market interface organization**
+
+https://esi.evetech.net/latest/markets/groups/?datasource=tranquility - all groups
+
+sample results (returns all results, 2k+):
+```
+[
+  2,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10
+]
+```
+
+https://esi.evetech.net/latest/markets/groups/{market_group_id}/?datasource=tranquility&language=en - for group 306
+
+sample result (exact):
+```
+{
+    "description": "Blueprints of large hybrid ammunition.",
+    "market_group_id": 306,
+    "name": "Large",
+    "parent_group_id": 300,
+    "types": [
+        1152,
+        1153,
+        1146,
+        1147,
+        1148,
+        1149,
+        1150,
+        1151
+    ]
+}
+```
