@@ -6,7 +6,9 @@
 
 9am - 10am: Read over materials about mvp and proposal, write proposal while doing some research in the api's documentation to get clarity (mainly on stretch goals)
 
-10am - am: Using Postman to make calls for the purpose of documenting routes here
+10am - 12:10pm: Using Postman to make calls for the purpose of documenting routes here
+
+1:10pm - 2pm: Continue researching endpoints and documenting api calls and results
 
 
 # Route documentation
@@ -43,7 +45,7 @@ https://esi.evetech.net/latest/markets/{region_id}/orders/?datasource=tranquilit
 https://esi.evetech.net/latest/markets/{region_id}/orders/?datasource=tranquility&order_type=buy&page=1 - buy
 https://esi.evetech.net/latest/markets/{region_id}/orders/?datasource=tranquility&order_type=sell&page=1 - sell
 
-Sample return (for all):
+Sample return (shortened - for all):
 ```
 [
   {
@@ -166,5 +168,55 @@ sample result (exact):
         1150,
         1151
     ]
+}
+```
+
+## **Status (player count)**
+
+This can just be a bit of info off to the side showing how many players are logged in atm
+
+https://esi.evetech.net/latest/status/?datasource=tranquility
+
+sample result (exact):
+```
+{
+    "players": 26188,
+    "server_version": "2003445",
+    "start_time": "2022-02-18T11:01:38Z"
+}
+```
+
+## **Search**
+
+**This allows the user to search by a string and get all of the examples of the selected category by id, it takes a category, search string, and boolean value based on whether you want strict search or not** 
+
+https://esi.evetech.net/latest/search/?categories={category}&datasource=tranquility&language=en&search={searchTerm}&strict=false
+
+agent
+alliance
+character
+constellation
+corporation
+faction
+inventory_type (this is equal to type_id)
+region
+solar_system
+station
+
+sample result (shortened):
+```
+{
+  "inventory_type": [
+      34181,
+      3194,
+      3195,
+      3204,
+      34065,
+      7367,
+      40564,
+      41365,
+      41366,
+      9139
+  ]
 }
 ```
