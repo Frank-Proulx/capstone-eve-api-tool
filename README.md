@@ -235,6 +235,8 @@ sample result (shortened):
 
 ### **Category - this is a complicated area, looks like there is overlap with the market but it's two different systems that share information, it goes Category > Group > Type**
 
+For a list of all categories...
+
 https://esi.evetech.net/latest/universe/categories/?datasource=tranquility
 
 The above route provides a list of all category_id, which is actually pretty small, this result is the entire list:
@@ -288,11 +290,279 @@ The above route provides a list of all category_id, which is actually pretty sma
 ]
 ```
 
+For a specific category_id...
+
+https://esi.evetech.net/latest/universe/categories/{category_id}/?datasource=tranquility&language=en
 
 
+Sample result (full result for category 25):
+```
+{
+    "category_id": 25,
+    "groups": [
+        450,
+        451,
+        452,
+        453,
+        454,
+        455,
+        456,
+        457,
+        458,
+        459,
+        460,
+        461,
+        462,
+        465,
+        467,
+        468,
+        469,
+        519,
+        903,
+        1884,
+        1911,
+        1920,
+        1921,
+        1922,
+        1923,
+        2006,
+        2022,
+        2024,
+        4029,
+        4030,
+        4031,
+        4094
+    ],
+    "name": "Asteroid",
+    "published": true
+}
+```
 
+### **Group**
 
+For a full list of groups (paginated)
 
+https://esi.evetech.net/latest/universe/groups/?datasource=tranquility&page=1
+
+Sample result (shortened, about a thousand per page):
+```
+[
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6
+]
+```
+
+For a specific group_id...
+
+https://esi.evetech.net/latest/universe/groups/{group_id}/?datasource=tranquility&language=en
+
+Sample result (exact for group 224):
+```
+{
+  "category_id": 9,
+  "group_id": 224,
+  "name": "Tracking Computer Blueprint",
+  "published": true,
+  "types": [
+      11621,
+      11840,
+      15793,
+      22928,
+      22930
+  ]
+}
+```
+
+### **Type**
+
+For a full list of types (paginated)...
+
+https://esi.evetech.net/latest/universe/types/?datasource=tranquility&page=1
+
+Sample result (shortened):
+```
+[
+  0,
+  2,
+  3,
+  4,
+  5,
+  6
+]
+```
+
+For a specific type_id...
+
+https://esi.evetech.net/latest/universe/types/{type_id}/?datasource=tranquility&language=en
+
+Sample result (these are complicated and vary quite a bit for different type_id's, this is for item 450):
+```
+{
+  "capacity": 1.0,
+  "description": "Rapid fire multi-barreled energy weapon that delivers a steady stream of damage. \r\n\r\nRequires frequency crystal ammo types: Gamma, Infrared, Microwave, Multifrequency, Radio, Standard, Ultraviolet, Xray.",
+  "dogma_attributes": [
+    {
+        "attribute_id": 128,
+        "value": 1.0
+    },
+    {
+        "attribute_id": 1795,
+        "value": 0.01
+    },
+    {
+        "attribute_id": 4,
+        "value": 500.0
+    },
+    {
+        "attribute_id": 6,
+        "value": 1.82
+    },
+    {
+        "attribute_id": 9,
+        "value": 40.0
+    },
+    {
+        "attribute_id": 277,
+        "value": 1.0
+    },
+    {
+        "attribute_id": 278,
+        "value": 1.0
+    },
+    {
+        "attribute_id": 1180,
+        "value": 0.01
+    },
+    {
+        "attribute_id": 158,
+        "value": 1000.0
+    },
+    {
+        "attribute_id": 160,
+        "value": 308.125
+    },
+    {
+        "attribute_id": 161,
+        "value": 5.0
+    },
+    {
+        "attribute_id": 162,
+        "value": 1.0
+    },
+    {
+        "attribute_id": 422,
+        "value": 1.0
+    },
+    {
+        "attribute_id": 47,
+        "value": 1.0
+    },
+    {
+        "attribute_id": 50,
+        "value": 4.0
+    },
+    {
+        "attribute_id": 51,
+        "value": 2100.0
+    },
+    {
+        "attribute_id": 30,
+        "value": 5.0
+    },
+    {
+        "attribute_id": 182,
+        "value": 3303.0
+    },
+    {
+        "attribute_id": 183,
+        "value": 3300.0
+    },
+    {
+        "attribute_id": 1210,
+        "value": 15.0
+    },
+    {
+        "attribute_id": 1211,
+        "value": 0.6
+    },
+    {
+        "attribute_id": 1212,
+        "value": 1.0
+    },
+    {
+        "attribute_id": 61,
+        "value": 0.0
+    },
+    {
+        "attribute_id": 64,
+        "value": 1.5
+    },
+    {
+        "attribute_id": 54,
+        "value": 4200.0
+    },
+    {
+        "attribute_id": 604,
+        "value": 86.0
+    },
+    {
+        "attribute_id": 38,
+        "value": 1.0
+    },
+    {
+        "attribute_id": 1768,
+        "value": 11313.0
+    },
+    {
+        "attribute_id": 620,
+        "value": 40000.0
+    },
+    {
+        "attribute_id": 633,
+        "value": 0.0
+    }
+  ],
+  "dogma_effects": [
+    {
+        "effect_id": 10,
+        "is_default": true
+    },
+    {
+        "effect_id": 12,
+        "is_default": false
+    },
+    {
+        "effect_id": 16,
+        "is_default": false
+    },
+    {
+        "effect_id": 42,
+        "is_default": false
+    },
+    {
+        "effect_id": 3025,
+        "is_default": false
+    }
+  ],
+  "graphic_id": 11118,
+  "group_id": 53,
+  "icon_id": 350,
+  "market_group_id": 570,
+  "mass": 500.0,
+  "name": "Gatling Pulse Laser I",
+  "packaged_volume": 5.0,
+  "portion_size": 1,
+  "published": true,
+  "radius": 1.0,
+  "type_id": 450,
+  "volume": 5.0
+}
+```
 
 
 ## License
