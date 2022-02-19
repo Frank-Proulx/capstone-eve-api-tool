@@ -20,6 +20,8 @@
 
 2pm - 3pm: Looking into the "Universe" section of the api, lots of global info here and difficult to parse, added endpoints for category, group and type id's
 
+3pm - 4pm: Continue using postman to sample api calls and map endpoints, spent some time in eve-dev discords trying to get answers on images to no avail.
+
 
 # Route documentation
 
@@ -30,7 +32,7 @@ Database of icons: img src="https://images.evetech.net/type/{type_id}/icon?size=
 
 ## Market
 
-### **All items with adjusted and average price by type_id**
+### **Prices - All items with adjusted and average price by type_id**
 
 https://esi.evetech.net/latest/markets/prices/?datasource=tranquility
 
@@ -49,7 +51,7 @@ Sample return (thousands of results):
   }
 ]
 ```
-### **Search buy, sell or all orders by region, page number required but defaults to 1**
+### **Orders - Search buy, sell or all orders by region, page number required but defaults to 1**
 
 https://esi.evetech.net/latest/markets/{region_id}/orders/?datasource=tranquility&order_type=all&page=1 - all
 https://esi.evetech.net/latest/markets/{region_id}/orders/?datasource=tranquility&order_type=buy&page=1 - buy
@@ -563,6 +565,58 @@ Sample result (these are complicated and vary quite a bit for different type_id'
   "volume": 5.0
 }
 ```
+
+### **Regions - will need for searching orders as they're region specific**
+
+Get an array of all region_id...
+
+https://esi.evetech.net/latest/universe/regions/?datasource=tranquility
+
+Sample result (shortened):
+```
+[
+  10000001,
+  10000002,
+  10000003,
+  10000004,
+  10000005
+]
+```
+
+And by region_id...
+
+https://esi.evetech.net/latest/universe/regions/{region_id}/?datasource=tranquility&language=en
+
+Sample result (for forge 10000002):
+```
+{
+  "constellations": [
+    20000017,
+    20000018,
+    20000019,
+    20000020,
+    20000021,
+    20000022,
+    20000023,
+    20000024,
+    20000025,
+    20000026,
+    20000027,
+    20000028,
+    20000029
+  ],
+  "description": "\"The greater the State becomes, the greater humanity under it flourishes.\"",
+  "name": "The Forge",
+  "region_id": 10000002
+}
+```
+
+### **Bulk names to id's and id's to names - These are POST calls**
+
+
+
+
+
 
 
 ## License
