@@ -22,6 +22,8 @@
 
 3pm - 4pm: Continue using postman to sample api calls and map endpoints, spent some time in eve-dev discords trying to get answers on images to no avail.
 
+4pm - 5pm: Researched how to send an array of strings as JSON in the body of a postman post call in order to use the search name by id and id by name functions in the ESI, figured it out and is working in postman, will continue researching how to do this on my own with javascript
+
 
 # Route documentation
 
@@ -613,8 +615,61 @@ Sample result (for forge 10000002):
 
 ### **Bulk names to id's and id's to names - These are POST calls**
 
+This is the post request...
 
+https://esi.evetech.net/latest/universe/ids/?datasource=tranquility&language=en
 
+needs this sent as JSON in the body...
+```
+[
+  "tritanium",
+  "isogen",
+  "veldspar",
+  "heavy water"
+]
+```
+
+Result is this...
+```
+{
+  "characters": [
+    {
+      "id": 243070982,
+      "name": "Tritanium"
+    },
+    {
+      "id": 1905746431,
+      "name": "isogen"
+    },
+    {
+      "id": 95223939,
+      "name": "Veldspar"
+    },
+    {
+      "id": 1175186581,
+      "name": "Heavy Water"
+    }
+  ],
+  "inventory_types": [
+    {
+      "id": 34,
+      "name": "Tritanium"
+    },
+    {
+      "id": 37,
+      "name": "Isogen"
+    },
+    {
+      "id": 1230,
+      "name": "Veldspar"
+    },
+    {
+      "id": 16272,
+      "name": "Heavy Water"
+    }
+  ]
+}
+```
 
 
 
