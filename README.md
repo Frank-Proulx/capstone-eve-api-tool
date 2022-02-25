@@ -27,9 +27,14 @@
 #### Friday 2/25
 
 8 - 8:30am: Review progress so far and organize to do list for the day
+
 8:30 - 9am: Further test and add endpoint info for post requests, begin researching making post calls using fetch()
+
 9 - 10am: Begin mapping out the process for each feature, working on search by name.
+
 10 - 11:30am: Continue mapping out specifics of an item search, realize that api info is incomplete, search online for solutions in various eve 3rd party dev resources.
+
+11:30 - 12pm: Join slack channel for 3rd party developers for eve tools, keep researching/troubleshooting finding complete market info
 
 # Feature mapping 
 
@@ -113,9 +118,12 @@ In order to search for orders will need to give a region (these should be hard-c
 Will need to then make a grid that has two distinct sections for buy and sell and in each section:
 
 * Time remaining: duration property - issued property
-* location: https://esi.evetech.net/latest/universe/stations/{location_id}/?datasource=tranquility
-
-
+* location: https://esi.evetech.net/latest/universe/stations/{location_id}/?datasource=tranquility or save this locally
+* location will be station/region/system
+* Price
+* Volume remain (and volume total?)
+* Range (region etc)
+* 
 
 "duration": 90,
 "is_buy_order": false,
@@ -132,7 +140,7 @@ Will need to then make a grid that has two distinct sections for buy and sell an
 
 # Route documentation
 
-See route documentation here **insert link to github after push**
+See route documentation here [link to doc](https://github.com/Frank-Proulx/capstone-eve-api-tool/blob/main/route-documentation.md)
 
 ## License
 
