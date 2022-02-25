@@ -27,6 +27,56 @@
 #### Friday 2/25
 
 8 - 8:30am: Review progress so far and organize to do list for the day
+8:30 - 9am: Further test and add endpoint info for post requests, begin researching making post calls using fetch()
+9 - 10am: Begin mapping out the process for each feature, working on search by name.
+
+# Feature mapping
+
+## Search for item id by name(as post in universe route), return buy and sell prices for each region:
+
+**IMPORTANT - THIS MIGHT BE INFERIOR TO THE SEARCH ROUTE WHICH TAKES A STRING AND RETURNS A LIST OF ID'S**
+
+* Need input, user enters name into input (exact?)
+* Should site populate a full list of names, if so provide some kind of dropdown? (this will have too many entries, need to research autofill as they're typing)
+* Will there be some backend storage? Or will the site query all things everytime a user visits
+* Problem is that in order to search item, need to find type_id of that item using search by string post call.
+
+Process for searching item by name:
+
+Enter name "tritanium"
+Post this and receive a json object that has two keys, "characters" and "inventory_types", these search by name posts will always return categorized results from this list:
+
+* agent
+* alliance
+* character
+* constellation
+* corporation
+* faction
+* inventory_type (this is equal to type_id)
+* region
+* solar_system
+* station
+
+each category will hold an array of objects, the objects will have an "id" key and a "name" key with corresponding values. 
+
+```
+{
+    "characters": [
+        {
+            "id": 243070982,
+            "name": "Tritanium"
+        }
+    ],
+    "inventory_types": [
+        {
+            "id": 34,
+            "name": "Tritanium"
+        }
+    ]
+}
+```
+
+so will need to get result = response.inventory_types, this will typically be an array with one object, in which case it will be result[0].id, but will need to account for possibility there is more than one result **to be continued**
 
 
 # Route documentation
@@ -675,6 +725,44 @@ Result is this...
 }
 ```
 
+and when passing id's to get names use this endpoint
+
+https://esi.evetech.net/latest/universe/names/?datasource=tranquility
+
+and body gets this...
+```
+[
+    34,
+    37,
+    1230,
+    1175186581
+]
+```
+
+and the result will be:
+
+[
+  {
+    "category": "inventory_type",
+    "id": 37,
+    "name": "Isogen"
+  },
+  {
+    "category": "inventory_type",
+    "id": 1230,
+    "name": "Veldspar"
+  },
+  {
+    "category": "character",
+    "id": 1175186581,
+    "name": "Heavy Water"
+  },
+  {
+    "category": "inventory_type",
+    "id": 34,
+    "name": "Tritanium"
+  }
+]
 
 
 
