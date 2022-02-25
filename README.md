@@ -24,6 +24,10 @@
 
 4pm - 5pm: Researched how to send an array of strings as JSON in the body of a postman post call in order to use the search name by id and id by name functions in the ESI, figured it out and is working in postman, will continue researching how to do this on my own with javascript
 
+#### Friday 2/25
+
+8 - 8:30am: Review progress so far and organize to do list for the day
+
 
 # Route documentation
 
