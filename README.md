@@ -27,6 +27,7 @@
 #### Friday 2/25
 
 8 - 8:30am: Review progress so far and organize to do list for the day
+8:30am - 9:30am: Further test and add endpoint info for post requests, begin researching making post calls using fetch()
 
 
 # Route documentation
@@ -675,6 +676,44 @@ Result is this...
 }
 ```
 
+and when passing id's to get names use this endpoint
+
+https://esi.evetech.net/latest/universe/names/?datasource=tranquility
+
+and body gets this...
+```
+[
+    34,
+    37,
+    1230,
+    1175186581
+]
+```
+
+and the result will be:
+
+[
+  {
+    "category": "inventory_type",
+    "id": 37,
+    "name": "Isogen"
+  },
+  {
+    "category": "inventory_type",
+    "id": 1230,
+    "name": "Veldspar"
+  },
+  {
+    "category": "character",
+    "id": 1175186581,
+    "name": "Heavy Water"
+  },
+  {
+    "category": "inventory_type",
+    "id": 34,
+    "name": "Tritanium"
+  }
+]
 
 
 
