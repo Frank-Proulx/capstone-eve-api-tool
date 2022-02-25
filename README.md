@@ -36,6 +36,8 @@
 
 11:30 - 12pm: Join slack channel for 3rd party developers for eve tools, keep researching/troubleshooting finding complete market info
 
+1pm - 2pm: Review lessons on redux, brainstorm best method for dealing with data (repeated api calls, saved json in constants, use firebase?)
+
 # Feature mapping 
 
 **Note - Able to download json responses for including static data**
