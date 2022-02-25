@@ -1,4 +1,4 @@
-export default regions = 
+const regions = 
 [
   {
     "category": "region",
@@ -555,4 +555,6 @@ export default regions =
     "id": 10000070,
     "name": "Pochven"
   }
-]
+];
+
+export default regions;

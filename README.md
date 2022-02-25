@@ -38,6 +38,8 @@
 
 1pm - 2pm: Review lessons on redux, brainstorm best method for dealing with data (repeated api calls, saved json in constants, use firebase?)
 
+2pm - 3:15pm: Add simple components, work on dropdown menu and research best way to handle state, experiment with changing state in control file.
+
 # Feature mapping 
 
 **Note - Able to download json responses for including static data**
