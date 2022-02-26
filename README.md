@@ -42,6 +42,10 @@
 
 3:15 - 4pm: Test api call, get results to work with hardcoded fields, next working on getting input to register as not null.
 
+4 - 4:30pm: Solve null input issue by moving api call into submit function for now.
+
+4:30 - 5pm: Research setState to figure out why it's taking too long to update for the api call to receive that data in time.
+
 # Feature mapping 
 
 **Note - Able to download json responses for including static data**

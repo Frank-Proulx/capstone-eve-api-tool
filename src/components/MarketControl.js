@@ -22,7 +22,7 @@ class MarketControl extends React.Component {
     //   selectedRegion: region,
     //   selectedItem: item
     // });
-    fetch(`https://esi.evetech.net/latest/markets/${region}/orders/?datasource=tranquility&order_type=buy&page=1&type_id=${item}`)
+    fetch(`https://esi.evetech.net/latest/markets/${region}/orders/?datasource=tranquility&order_type=sell&page=1&type_id=${item}`)
     .then(response => response.json())
     .then(
       (jsonifiedResponse) => {
@@ -77,7 +77,6 @@ class MarketControl extends React.Component {
           <button type="submit">Search</button>
         </form>
         <p>{this.state.selectedItem}</p>
-        <p>{this.state.selectedRegion}</p>
         <p>{console.log(this.state.ordersList)}</p>
       </React.Fragment>
     );
