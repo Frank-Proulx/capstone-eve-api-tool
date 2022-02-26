@@ -40,6 +40,8 @@
 
 2pm - 3:15pm: Add simple components, work on dropdown menu and research best way to handle state, experiment with changing state in control file.
 
+3:15 - 4pm: Test api call, get results to work with hardcoded fields, next working on getting input to register as not null.
+
 # Feature mapping 
 
 **Note - Able to download json responses for including static data**
