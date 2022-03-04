@@ -8,51 +8,52 @@ class MarketControl extends React.Component {
       regions: regions,
       error: null,
       isLoaded: false,
-      ordersList: []
+      buyOrders: [],
+      sellOrders: []
     };
   }
 
+  // TTT location id = 1028858195
+
   handleSubmit = (event) => {
     event.preventDefault();
-    const region = event.target.regionList.value;
-    const item = parseInt(event.target.item.value);
-    fetch(`https://esi.evetech.net/latest/markets/${region}/orders/?datasource=tranquility&order_type=sell&page=1&type_id=${item}`)
-    .then(response => response.json())
+    let region = event.target.regionList.value;
+    let item = event.target.item.value;
+    this.getItemId(region, item);
+  }
+
+  getItemId = (region, item) => {
+    fetch(`https://esi.evetech.net/latest/search/?categories=inventory_type&datasource=tranquility&language=en&search=${item}&strict=true
+    `).then(response => response.json())
     .then(
       (jsonifiedResponse) => {
-        this.setState({
-          isLoaded: true,
-          ordersList: jsonifiedResponse
-        });
+        this.makeApiCall(region, jsonifiedResponse.inventory_type[0]);
       })
       .catch((error) => {
         this.setState({
-          isLoaded: true,
           error
         });
       });
-    // this.makeApiCall();
   }
 
-  // makeApiCall = () => {
-  //   if ((this.state.selectedRegion != null) && (this.state.selectedItem != null)) {
-  //     fetch(`https://esi.evetech.net/latest/markets/${this.state.selectedRegion}/orders/?datasource=tranquility&order_type=buy&page=1&type_id=${this.state.selectedItem}`)
-  //   .then(response => response.json())
-  //   .then(
-  //     (jsonifiedResponse) => {
-  //       this.setState({
-  //         isLoaded: true,
-  //         ordersList: jsonifiedResponse
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       this.setState({
-  //         isLoaded: true,
-  //         error
-  //       });
-  //     });
-  //   }
-  // }
+  makeApiCall = (region, item) => {
+    fetch(`https://esi.evetech.net/latest/markets/${region}/orders/?datasource=tranquility&order_type=all&page=1&type_id=${item}`)
+  .then(response => response.json())
+  .then(
+    (jsonifiedResponse) => {
+      this.setState({
+        isLoaded: true,
+        buyOrders: jsonifiedResponse.filter(order => order.is_buy_order === true),
+        sellOrders: jsonifiedResponse.filter(order => order.is_buy_order === false)
+      });
+    })
+    .catch((error) => {
+      this.setState({
+        isLoaded: true,
+        error
+      });
+    });
+  }
 
   render() {
     return (
@@ -71,7 +72,8 @@ class MarketControl extends React.Component {
           <button type="submit">Search</button>
         </form>
         <p>{this.state.selectedItem}</p>
-        <p>{console.log(this.state.ordersList)}</p>
+        <p>{console.log(this.state.buyOrders)}</p>
+        <p>{console.log(this.state.sellOrders)}</p>
       </React.Fragment>
     );
   }
