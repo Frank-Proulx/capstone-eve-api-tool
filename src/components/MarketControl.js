@@ -72,7 +72,9 @@ class MarketControl extends React.Component {
           </select>
           <button type="submit">Search</button>
         </form>
-        <MarketTable />
+        <MarketTable 
+          sellOrders={this.state.sellOrders}
+          buyOrders={this.state.buyOrders} />
         <p>{this.state.selectedItem}</p>
         <p>{console.log(this.state.buyOrders)}</p>
         <p>{console.log(this.state.sellOrders)}</p>
