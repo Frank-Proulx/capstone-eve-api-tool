@@ -6,8 +6,6 @@ class MarketControl extends React.Component {
     super(props);
     this.state = {
       regions: regions,
-      // selectedItem: null,
-      // selectedRegion: null,
       error: null,
       isLoaded: false,
       ordersList: []
@@ -18,10 +16,6 @@ class MarketControl extends React.Component {
     event.preventDefault();
     const region = event.target.regionList.value;
     const item = parseInt(event.target.item.value);
-    // this.setState({
-    //   selectedRegion: region,
-    //   selectedItem: item
-    // });
     fetch(`https://esi.evetech.net/latest/markets/${region}/orders/?datasource=tranquility&order_type=sell&page=1&type_id=${item}`)
     .then(response => response.json())
     .then(

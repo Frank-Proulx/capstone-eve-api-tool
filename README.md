@@ -46,6 +46,12 @@
 
 4:30 - 5pm: Research setState to figure out why it's taking too long to update for the api call to receive that data in time.
 
+#### Friday 3/4
+
+8am - 8:30am: reorganize and create to do list
+
+8:30 - 
+
 # Feature mapping 
 
 **Note - Able to download json responses for including static data**
