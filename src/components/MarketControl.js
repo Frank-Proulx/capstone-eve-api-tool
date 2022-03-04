@@ -10,7 +10,8 @@ class MarketControl extends React.Component {
       error: null,
       isLoaded: false,
       buyOrders: [],
-      sellOrders: []
+      sellOrders: [],
+      structureArray: []
     };
   }
 
@@ -21,6 +22,10 @@ class MarketControl extends React.Component {
     let region = event.target.regionList.value;
     let item = event.target.item.value;
     this.getItemId(region, item);
+  }
+
+  searchStations = (locationArray) => {
+    
   }
 
   getItemId = (region, item) => {
@@ -45,7 +50,8 @@ class MarketControl extends React.Component {
       this.setState({
         isLoaded: true,
         buyOrders: jsonifiedResponse.filter(order => order.is_buy_order === true),
-        sellOrders: jsonifiedResponse.filter(order => order.is_buy_order === false)
+        sellOrders: jsonifiedResponse.filter(order => order.is_buy_order === false),
+        structureArray: [...new Set(jsonifiedResponse.map(order => order.location_id))]
       });
     })
     .catch((error) => {
@@ -54,6 +60,7 @@ class MarketControl extends React.Component {
         error
       });
     });
+    console.log(this.state.structureArray);
   }
 
   render() {

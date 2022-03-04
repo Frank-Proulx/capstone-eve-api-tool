@@ -52,7 +52,15 @@
 
 8:30 - 9:30am: coding/testing api calls, can now search by name and get market result sorted into buy and sell orders.
 
-9:30am - : research using tables with react
+9:30am - 10am: research using tables with react
+
+10am - 12pm: coding
+
+12pm - 1:30pm: coding
+
+1:30pm - 2:30: research how to get all location_id without making hundreds of api calls per search, accept that i'll need to make the calls but make a plan to make them state.
+
+2:30pm -
 
 # Feature mapping 
 

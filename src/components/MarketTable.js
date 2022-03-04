@@ -11,8 +11,7 @@ function MarketTable(props) {
     margin: "0 auto",
     overflow: "scroll",
     border: "1px solid black",
-    textAlign: "left",
-    tr
+    textAlign: "left"
   }
 
   function timeifier(start, duration) {
@@ -41,15 +40,16 @@ function MarketTable(props) {
     sellTable = 
       <div style={tableDiv}>
         <table>
-          <tbody>
+          <thead>
             <tr>
               <th>Quantity</th>
               <th>Price</th>
               <th>Location</th>
               <th>Range</th>
-              {/* <th>Min Volume</th> */}
               <th>Expires In</th>
             </tr>
+          </thead>
+          <tbody>
             {props.sellOrders.map((order, index) => 
               <tr key={index}>
                 <td>{order.volume_remain}</td>
@@ -69,7 +69,7 @@ function MarketTable(props) {
     buyTable = 
     <div style={tableDiv}>
         <table>
-          <tbody>
+          <thead>
             <tr>
               <th>Quantity</th>
               <th>Price</th>
@@ -78,6 +78,8 @@ function MarketTable(props) {
               <th>Min Volume</th>
               <th>Expires In</th>
             </tr>
+          </thead>
+          <tbody>
             {props.sellOrders.map((order, index) => 
               <tr key={index}>
                 <td>{order.volume_remain}</td>
