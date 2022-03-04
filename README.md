@@ -50,7 +50,9 @@
 
 8am - 8:30am: reorganize and create to do list
 
-8:30 - 
+8:30 - 9:30am: coding/testing api calls, can now search by name and get market result sorted into buy and sell orders.
+
+9:30am - : research using tables with react
 
 # Feature mapping 
 

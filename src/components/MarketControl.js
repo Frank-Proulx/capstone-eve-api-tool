@@ -1,5 +1,6 @@
 import React from 'react';
 import regions from './../data/Regions'
+import MarketTable from './MarketTable';
 
 class MarketControl extends React.Component {
   constructor(props) {
@@ -71,6 +72,7 @@ class MarketControl extends React.Component {
           </select>
           <button type="submit">Search</button>
         </form>
+        <MarketTable />
         <p>{this.state.selectedItem}</p>
         <p>{console.log(this.state.buyOrders)}</p>
         <p>{console.log(this.state.sellOrders)}</p>
