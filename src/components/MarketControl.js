@@ -25,7 +25,24 @@ class MarketControl extends React.Component {
   }
 
   searchStations = (locationArray) => {
-    
+    locationArray.forEach((location) => {
+      if (location < 100000000) {
+      fetch(`https://esi.evetech.net/latest/universe/stations/${location}/?datasource=tranquility
+    `).then(response => response.json())
+    .then(
+      (jsonifiedResponse) => {
+        this.setState({
+          structureArray: this.state.structureArray.concat(jsonifiedResponse),
+          isLoaded: true
+        })
+      })
+      .catch((error) => {
+        this.setState({
+          error
+        });
+      });
+      }
+    });
   }
 
   getItemId = (region, item) => {
@@ -48,11 +65,10 @@ class MarketControl extends React.Component {
   .then(
     (jsonifiedResponse) => {
       this.setState({
-        isLoaded: true,
         buyOrders: jsonifiedResponse.filter(order => order.is_buy_order === true),
         sellOrders: jsonifiedResponse.filter(order => order.is_buy_order === false),
-        structureArray: [...new Set(jsonifiedResponse.map(order => order.location_id))]
       });
+      this.searchStations([...new Set(jsonifiedResponse.map(order => order.location_id))])
     })
     .catch((error) => {
       this.setState({
@@ -81,10 +97,12 @@ class MarketControl extends React.Component {
         </form>
         <MarketTable 
           sellOrders={this.state.sellOrders}
-          buyOrders={this.state.buyOrders} />
-        <p>{this.state.selectedItem}</p>
-        <p>{console.log(this.state.buyOrders)}</p>
-        <p>{console.log(this.state.sellOrders)}</p>
+          buyOrders={this.state.buyOrders} 
+          structureArray={this.state.structureArray}
+          isLoaded={this.state.isLoaded} />
+        {/* <p>{console.log(this.state.buyOrders)}</p> */}
+        {/* <p>{console.log(this.state.sellOrders)}</p> */}
+        <p>{console.log(this.state.structureArray)}</p>
       </React.Fragment>
     );
   }

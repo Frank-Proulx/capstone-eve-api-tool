@@ -60,7 +60,7 @@
 
 1:30pm - 2:30: research how to get all location_id without making hundreds of api calls per search, accept that i'll need to make the calls but make a plan to make them state.
 
-2:30pm -
+2:30pm - 3:45pm: try to make a function that creates a minidatabase of structure info objects, extensive troubleshooting to get this working. Have added mini DB to state and able to display but only works sometimes, continue bugfixing.
 
 # Feature mapping 
 

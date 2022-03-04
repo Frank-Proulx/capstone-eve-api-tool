@@ -14,6 +14,12 @@ function MarketTable(props) {
     textAlign: "left"
   }
 
+  function filterLocation(structureArray, locationID) {
+    let result = structureArray.filter(structure => structure.station_id === locationID);
+    let resultHolder = result[0];
+    return resultHolder.name
+  }
+
   function timeifier(start, duration) {
     let result = '';
     let startPoint = new Date(start);
@@ -54,7 +60,7 @@ function MarketTable(props) {
               <tr key={index}>
                 <td>{order.volume_remain}</td>
                 <td>{order.price}</td>
-                <td>{order.location_id}</td>
+                <td>{props.isLoaded ? filterLocation(props.structureArray, order.location_id) : "Loading..."}</td>
                 <td>{order.range}</td>
                 <td>{timeifier(order.issued, order.duration)}</td>
               </tr>
@@ -84,7 +90,7 @@ function MarketTable(props) {
               <tr key={index}>
                 <td>{order.volume_remain}</td>
                 <td>{order.price}</td>
-                <td>{order.location_id}</td>
+                <td>{filterLocation(props.structureArray, order.location_id)}</td>
                 <td>{order.range}</td>
                 <td>{order.min_volume}</td>
                 <td>{timeifier(order.issued, order.duration)}</td>
