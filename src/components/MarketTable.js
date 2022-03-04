@@ -3,8 +3,29 @@ import React from 'react';
 function MarketTable(props) {
   let sellTable;
   let buyTable;
-  function timifier(milliseconds) {
+  let now = new Date();
 
+  function timeifier(start, duration) {
+    let result = '';
+    let startPoint = new Date(start);
+    let diff = ((duration * 86400000) - (now - startPoint));
+    let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    if (days > 0) {
+      result += `${days}d `; 
+    }
+    if (hours > 0) {
+      result += `${hours}h `;
+    }
+    if (minutes > 0) {
+      result += `${minutes}m `;
+    }
+    if (seconds > 0) {
+      result += `${seconds}s `;
+    }
+    return result;
   }
   if (props.sellOrders.length > 0) {
     sellTable = 
@@ -25,7 +46,7 @@ function MarketTable(props) {
                 <td>{order.price}</td>
                 <td>{order.location_id}</td>
                 <td>{order.range}</td>
-                <td>{7776000000 - (Date.now() - new Date(order.issued))}</td>
+                <td>{timeifier(order.issued, order.duration)}</td>
               </tr>
             )}
           </tbody>
