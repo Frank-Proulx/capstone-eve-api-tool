@@ -62,6 +62,8 @@
 
 2:30pm - 3:45pm: try to make a function that creates a minidatabase of structure info objects, extensive troubleshooting to get this working. Have added mini DB to state and able to display but only works sometimes, continue bugfixing.
 
+3:45pm - 5pm: made many many adjustments, narrowed problem down to the structureArray being filtered, needed to account for if the station was a private endpoint thus creating an empty array that it was then trying to get the name property from the 0 index, which did not exist, fixed with an || operator in the filterLocation function in MarketTable. **Need to figure out why TTT isn't displaying**
+
 # Feature mapping 
 
 **Note - Able to download json responses for including static data**

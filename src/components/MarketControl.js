@@ -25,6 +25,10 @@ class MarketControl extends React.Component {
   }
 
   searchStations = (locationArray) => {
+    console.log(locationArray)
+    this.setState({
+      structureArray: []
+    })
     locationArray.forEach((location) => {
       if (location < 100000000) {
       fetch(`https://esi.evetech.net/latest/universe/stations/${location}/?datasource=tranquility
@@ -76,7 +80,6 @@ class MarketControl extends React.Component {
         error
       });
     });
-    console.log(this.state.structureArray);
   }
 
   render() {
