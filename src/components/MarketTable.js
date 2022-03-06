@@ -6,7 +6,7 @@ function MarketTable(props) {
   let now = new Date();
 
   const tableDiv = {
-    width: "60vw",
+    width: "65vw",
     height: "30vh",
     margin: "0 auto",
     overflow: "scroll",
@@ -48,7 +48,7 @@ function MarketTable(props) {
         <table>
           <thead>
             <tr>
-              <th>Quantity</th>
+              <th onClick={props.sortBySellQuantity}>Quantity</th>
               <th>Price</th>
               <th>Location</th>
               <th>Range</th>

@@ -82,6 +82,22 @@ class MarketControl extends React.Component {
     });
   }
 
+  sortBySellQuantity = () => {
+    this.setState({
+      sellOrders: this.state.sellOrders.sort((a,b) => {
+        let quantityA = a.volume_remain;
+        let quantityB = b.volume_remain;
+        if (quantityA < quantityB) {
+          return -1;
+        } else if (quantityA > quantityB) {
+          return 1;
+        } else {
+          return 0;
+        }
+      })
+    })
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -102,7 +118,8 @@ class MarketControl extends React.Component {
           sellOrders={this.state.sellOrders}
           buyOrders={this.state.buyOrders} 
           structureArray={this.state.structureArray}
-          isLoaded={this.state.isLoaded} />
+          isLoaded={this.state.isLoaded} 
+          sortBySellQuantity={this.sortBySellQuantity} />
         {/* <p>{console.log(this.state.buyOrders)}</p> */}
         {/* <p>{console.log(this.state.sellOrders)}</p> */}
         <p>{console.log(this.state.structureArray)}</p>
