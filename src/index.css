@@ -16,3 +16,38 @@ td, th {
   border: 1px solid black;
   padding: 1px;
 }
+
+/* table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 3px solid purple;
+}
+
+thead th:nth-child(1) {
+  width: 10%;
+}
+
+thead th:nth-child(2) {
+  width: 20%;
+}
+
+thead th:nth-child(3) {
+  width: 35%;
+}
+
+thead th:nth-child(4) {
+  width: 25%;
+}
+
+thead th:nth-child(5) {
+  width: 25%;
+}
+
+thead th:nth-child(6) {
+  width: 35%;
+}
+
+th, td {
+  padding: 20px;
+} */

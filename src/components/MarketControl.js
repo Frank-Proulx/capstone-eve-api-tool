@@ -81,7 +81,7 @@ class MarketControl extends React.Component {
     });
   }
 
-  sortBySellQuantity = (propToSort) => {
+  sortSell = (propToSort) => {
     const sortAsc = (a,b) => {
       let sortA = a[propToSort];
       let sortB = b[propToSort];
@@ -111,6 +111,40 @@ class MarketControl extends React.Component {
     } else {
       this.setState({
         sellOrders: this.state.sellOrders.sort(sortDesc)
+      })
+    }
+  }
+
+  sortBuy = (propToSort) => {
+    const sortAsc = (a,b) => {
+      let sortA = a[propToSort];
+      let sortB = b[propToSort];
+      if (sortA < sortB) {
+        return -1;
+      } else if (sortA > sortB) {
+        return 1;
+      } else {
+        return 0;
+      }
+    }
+    const sortDesc = (a,b) => {
+      let sortA = a[propToSort];
+      let sortB = b[propToSort];
+      if (sortA < sortB) {
+        return 1;
+      } else if (sortA > sortB) {
+        return -1;
+      } else {
+        return 0;
+      }
+    }
+    if (this.state.buyOrders[0] !== this.state.buyOrders.sort(sortAsc)[0]) {
+      this.setState({
+        buyOrders: this.state.buyOrders.sort(sortAsc)
+      })
+    } else {
+      this.setState({
+        buyOrders: this.state.buyOrders.sort(sortDesc)
       })
     }
   }
@@ -146,7 +180,8 @@ class MarketControl extends React.Component {
           structureArray={this.state.structureArray}
           isLoaded={this.state.isLoaded} 
           addStationNameToOrder={this.addStationNameToOrder}
-          sortBySellQuantity={this.sortBySellQuantity} />
+          sortSell={this.sortSell} 
+          sortBuy={this.sortBuy} />
         {/* <p>{console.log(this.state.buyOrders)}</p> */}
         {/* <p>{console.log(this.state.sellOrders)}</p> */}
         {/* <p>{console.log(this.state.structureArray)}</p> */}

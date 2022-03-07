@@ -42,16 +42,16 @@ function MarketTable(props) {
     }
     return result;
   }
+  
   if (props.sellOrders.length > 0) {
     sellTable = 
       <div style={tableDiv}>
         <table>
           <thead>
             <tr>
-              <th onClick={() => props.sortBySellQuantity("volume_remain")}>Quantity</th>
-              <th onClick={() => props.sortBySellQuantity("price")}>Price</th>
+              <th onClick={() => props.sortSell("volume_remain")}>Quantity</th>
+              <th onClick={() => props.sortSell("price")}>Price</th>
               <th onClick={props.addStationNameToOrder}>Location</th>
-              <th>Range</th>
               <th>Expires In</th>
             </tr>
           </thead>
@@ -61,7 +61,6 @@ function MarketTable(props) {
                 <td>{order.volume_remain}</td>
                 <td>{order.price}</td>
                 <td>{order.station || filterLocation(props.structureArray, order.location_id)}</td>
-                <td>{order.range}</td>
                 <td>{timeifier(order.issued, order.duration)}</td>
               </tr>
             )}
@@ -77,10 +76,10 @@ function MarketTable(props) {
         <table>
           <thead>
             <tr>
-              <th>Quantity</th>
-              <th>Price</th>
+              <th onClick={() => props.sortBuy("volume_remain")}>Quantity</th>
+              <th onClick={() => props.sortBuy("price")}>Price</th>
               <th>Location</th>
-              <th>Range</th>
+              <th onClick={() => props.sortBuy("range")}>Range</th>
               <th>Min Volume</th>
               <th>Expires In</th>
             </tr>
