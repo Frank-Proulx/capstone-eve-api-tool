@@ -82,21 +82,55 @@ class MarketControl extends React.Component {
     });
   }
 
-  sortBySellQuantity = () => {
-    this.setState({
-      sellOrders: this.state.sellOrders.sort((a,b) => {
-        let quantityA = a.volume_remain;
-        let quantityB = b.volume_remain;
-        if (quantityA < quantityB) {
-          return -1;
-        } else if (quantityA > quantityB) {
-          return 1;
-        } else {
-          return 0;
-        }
+  sortBySellQuantity = (propToSort) => {
+    const sortAsc = (a,b) => {
+      let sortA = a[propToSort];
+      let sortB = b[propToSort];
+      if (sortA < sortB) {
+        return -1;
+      } else if (sortA > sortB) {
+        return 1;
+      } else {
+        return 0;
+      }
+    }
+    const sortDesc = (a,b) => {
+      let sortA = a[propToSort];
+      let sortB = b[propToSort];
+      if (sortA < sortB) {
+        return 1;
+      } else if (sortA > sortB) {
+        return -1;
+      } else {
+        return 0;
+      }
+    }
+    if (this.state.sellOrders[0] !== this.state.sellOrders.sort(sortAsc)[0]) {
+      this.setState({
+        sellOrders: this.state.sellOrders.sort(sortAsc)
       })
-    })
+    } else {
+      this.setState({
+        sellOrders: this.state.sellOrders.sort(sortDesc)
+      })
+    }
   }
+
+  // sortBySellQuantity = () => {
+  //   this.setState({
+  //     sellOrders: this.state.sellOrders.sort((a,b) => {
+  //       let quantityA = a.volume_remain;
+  //       let quantityB = b.volume_remain;
+  //       if (quantityA < quantityB) {
+  //         return -1;
+  //       } else if (quantityA > quantityB) {
+  //         return 1;
+  //       } else {
+  //         return 0;
+  //       }
+  //     })
+  //   })
+  // }
 
   render() {
     return (

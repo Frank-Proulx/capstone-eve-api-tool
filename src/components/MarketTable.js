@@ -48,8 +48,8 @@ function MarketTable(props) {
         <table>
           <thead>
             <tr>
-              <th onClick={props.sortBySellQuantity}>Quantity</th>
-              <th>Price</th>
+              <th onClick={() => props.sortBySellQuantity("volume_remain")}>Quantity</th>
+              <th onClick={() => props.sortBySellQuantity("price")}>Price</th>
               <th>Location</th>
               <th>Range</th>
               <th>Expires In</th>
@@ -86,7 +86,7 @@ function MarketTable(props) {
             </tr>
           </thead>
           <tbody>
-            {props.sellOrders.map((order, index) => 
+            {props.buyOrders.map((order, index) => 
               <tr key={index}>
                 <td>{order.volume_remain}</td>
                 <td>{order.price}</td>
