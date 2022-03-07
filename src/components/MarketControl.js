@@ -25,7 +25,6 @@ class MarketControl extends React.Component {
   }
 
   searchStations = (locationArray) => {
-    console.log(locationArray)
     this.setState({
       structureArray: []
     })
@@ -116,21 +115,14 @@ class MarketControl extends React.Component {
     }
   }
 
-  // sortBySellQuantity = () => {
-  //   this.setState({
-  //     sellOrders: this.state.sellOrders.sort((a,b) => {
-  //       let quantityA = a.volume_remain;
-  //       let quantityB = b.volume_remain;
-  //       if (quantityA < quantityB) {
-  //         return -1;
-  //       } else if (quantityA > quantityB) {
-  //         return 1;
-  //       } else {
-  //         return 0;
-  //       }
-  //     })
-  //   })
-  // }
+  addStationNameToOrder = () => {
+    this.setState({
+      sellOrders: this.state.sellOrders.map(order => {return {...order, station: this.state.structureArray.filter(structure => structure.station_id === order.location_id)[0]["name"]}})
+    })
+    this.setState({
+      buyOrders: this.state.buyOrders.map(order => {return {...order, station: this.state.structureArray.filter(structure => structure.station_id === order.location_id)[0]["name"]}})
+    })
+  }
 
   render() {
     return (
@@ -153,10 +145,11 @@ class MarketControl extends React.Component {
           buyOrders={this.state.buyOrders} 
           structureArray={this.state.structureArray}
           isLoaded={this.state.isLoaded} 
+          addStationNameToOrder={this.addStationNameToOrder}
           sortBySellQuantity={this.sortBySellQuantity} />
         {/* <p>{console.log(this.state.buyOrders)}</p> */}
         {/* <p>{console.log(this.state.sellOrders)}</p> */}
-        <p>{console.log(this.state.structureArray)}</p>
+        {/* <p>{console.log(this.state.structureArray)}</p> */}
       </React.Fragment>
     );
   }

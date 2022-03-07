@@ -50,7 +50,7 @@ function MarketTable(props) {
             <tr>
               <th onClick={() => props.sortBySellQuantity("volume_remain")}>Quantity</th>
               <th onClick={() => props.sortBySellQuantity("price")}>Price</th>
-              <th>Location</th>
+              <th onClick={props.addStationNameToOrder}>Location</th>
               <th>Range</th>
               <th>Expires In</th>
             </tr>
@@ -60,7 +60,7 @@ function MarketTable(props) {
               <tr key={index}>
                 <td>{order.volume_remain}</td>
                 <td>{order.price}</td>
-                <td>{props.isLoaded ? filterLocation(props.structureArray, order.location_id) : "Loading..."}</td>
+                <td>{order.station || filterLocation(props.structureArray, order.location_id)}</td>
                 <td>{order.range}</td>
                 <td>{timeifier(order.issued, order.duration)}</td>
               </tr>
