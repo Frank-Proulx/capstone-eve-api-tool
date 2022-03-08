@@ -67,7 +67,7 @@ function MarketTable(props) {
                 <th onClick={() => props.sortSell("price")}>Price</th>
                 <th onClick={() => props.sortSell("station")}>Location</th>
                 <th>Expires In</th>
-                <th>Jumps away</th>
+                {/* <th>Jumps away</th> */}
               </tr>
             </thead>
             <tbody>
@@ -77,7 +77,7 @@ function MarketTable(props) {
                   <td>{order.price}</td>
                   <td>{order.station || filterLocation(props.structureArray, order.location_id)}</td>
                   <td>{timeifier(order.issued, order.duration)}</td>
-                  <td>{props.getTravelRoute(props.startSystem, order.system_id)}</td>
+                  {/* <td>{props.getTravelRoute(props.startSystem, order.system_id)}</td> */}
                 </tr>
               )}
             </tbody>
@@ -102,7 +102,7 @@ function MarketTable(props) {
                 <th onClick={() => props.sortBuy("station")}>Location</th>
                 <th onClick={() => props.sortBuy("range")}>Range</th>
                 <th onClick={() => props.sortBuy("min_volume")}>Min Volume</th>
-                <th onClick={() => props.sortBuy("expires_in")}>Expires In</th>
+                <th>Expires In</th>
               </tr>
             </thead>
             <tbody>
@@ -113,8 +113,8 @@ function MarketTable(props) {
                   <td>{order.station || filterLocation(props.structureArray, order.location_id)}</td>
                   <td>{order.range}</td>
                   <td>{order.min_volume}</td>
-                  <td>{order.expires_in || timeifier(order.issued, order.duration)}</td>
-                  {/* <td>{timeifier(order.issued, order.duration)}</td> */}
+                  {/* <td>{order.expires_in || timeifier(order.issued, order.duration)}</td> */}
+                  <td>{timeifier(order.issued, order.duration)}</td>
                 </tr>
               )}
             </tbody>

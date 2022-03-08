@@ -188,11 +188,12 @@ class MarketControl extends React.Component {
   }
 
   addStationNameToOrder = () => {
+    let now = new Date();
     this.setState({
       sellOrders: this.state.sellOrders.map(order => {return {...order, station: this.state.structureArray.filter(structure => structure.station_id === order.location_id)[0]["name"]}})
     })
     this.setState({
-      buyOrders: this.state.buyOrders.map(order => {return {...order, station: this.state.structureArray.filter(structure => structure.station_id === order.location_id)[0]["name"], expires_in: ((order.duration * 86400000) - ((new Date()) - (new Date(order.issued))))}})
+      buyOrders: this.state.buyOrders.map(order => {return {...order, station: this.state.structureArray.filter(structure => structure.station_id === order.location_id)[0]["name"]}})
     })
   }
 
