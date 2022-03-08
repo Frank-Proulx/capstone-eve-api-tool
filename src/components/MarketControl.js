@@ -1,6 +1,7 @@
 import React from 'react';
 import regions from './../data/Regions'
 import MarketTable from './MarketTable';
+import Route from './Route';
 
 class MarketControl extends React.Component {
   constructor(props) {
@@ -23,22 +24,33 @@ class MarketControl extends React.Component {
       buyOrders: [],
       sellOrders: [],
       structureArray: [],
-      startSystem: null,
       marketSearch: false,
-      routePlotter: false
+      routePlotter: false,
+      currentRoute: []
     };
   }
 
   // TTT location id = 1028858195
+
+  displayMarket = () => {
+    this.setState({
+      marketSearch: true,
+      routePlotter: false
+    })
+  }
+
+  displayRoute = () => {
+    this.setState({
+      marketSearch: false,
+      routePlotter: true
+    })
+  }
 
   handleMarketSearch = (event) => {
     event.preventDefault();
     let region = event.target.regionList.value;
     let item = event.target.item.value;
     this.getItemId(region, item);
-    this.setState({
-      startSystem: system
-    })
     setTimeout(this.addStationNameToOrder, 1500);
     setTimeout(this.accountForCitadels, 2500);
   }
@@ -48,6 +60,7 @@ class MarketControl extends React.Component {
     let startSystem = parseInt(event.target.startSystem.value)
     let endSystem = parseInt(event.target.endSystem.value)
     let safety = event.target.safety.value
+
   }
 
   searchStations = (locationArray) => {
@@ -62,7 +75,6 @@ class MarketControl extends React.Component {
       (jsonifiedResponse) => {
         this.setState({
           structureArray: this.state.structureArray.concat(jsonifiedResponse),
-          isLoaded: true
         })
       })
       .catch((error) => {
@@ -107,24 +119,21 @@ class MarketControl extends React.Component {
     });
   }
 
-  getTravelRoute = (startSystem, endSystem) => {
-    if (startSystem && (startSystem !== endSystem)) {
-      fetch(`https://esi.evetech.net/latest/route/${startSystem}/${endSystem}/?datasource=tranquility&flag=shortest
-      `)
-    .then(response => response.json())
-    .then(
-      (jsonifiedResponse) => {
-        console.log(jsonifiedResponse)
-        return jsonifiedResponse.length
+  getTravelRoute = (startSystem, endSystem, safety) => {
+    fetch(`https://esi.evetech.net/latest/route/${startSystem}/${endSystem}/?datasource=tranquility&flag=${safety}
+    `)
+  .then(response => response.json())
+  .then(
+    (jsonifiedResponse) => {
+      this.setState({
+        currentRoute: jsonifiedResponse
       })
-      .catch((error) => {
-        this.setState({
-          error
-        });
+    })
+    .catch((error) => {
+      this.setState({
+        error
       });
-    } else {
-      return "0"
-    }
+    });
   }
 
   sortSell = (propToSort) => {
@@ -228,6 +237,8 @@ class MarketControl extends React.Component {
 
   render() {
 
+    let currentlyVisible;
+
     const searchStyle1 = {
       width: "14vw",
       margin: "0 auto"
@@ -235,6 +246,11 @@ class MarketControl extends React.Component {
 
     const searchStyle2 = {
       width: "26vw",
+      margin: "0 auto"
+    }
+
+    const searchStyle3 = {
+      width: "31vw",
       margin: "0 auto"
     }
 
@@ -272,25 +288,33 @@ class MarketControl extends React.Component {
     } else if (this.state.routePlotter === true){
       currentlyVisible = 
       <React.Fragment>
-        <form>
-          <input 
-          type='text'
-          name='startSystem'
-          placeholder='Start System' />
-          <input 
-          type='text'
-          name='endSystem'
-          placeholder='End System' />
-          <button type="submit">Search</button>
-        </form>
+        <div style={searchStyle3}>
+          <form>
+            <input 
+            type='text'
+            name='startSystem'
+            placeholder='Start System' />
+            <input 
+            type='text'
+            name='endSystem'
+            placeholder='End System' />
+            <select name="safety" id="safety">
+              <option value="shortest">Shortest</option>
+              <option value="secure">Secure</option>
+              <option value="insecure">Insecure</option>
+            </select>
+            <button type="submit">Search</button>
+          </form>
+        </div>
+        <Route />
       </React.Fragment>
     }
 
     return (
       <React.Fragment>
         <div style={searchStyle1}>
-          <button>Market Search</button>
-          <button>Route Plotter</button>
+          <button onClick={this.displayMarket}>Market Search</button>
+          <button onClick={this.displayRoute}>Route Plotter</button>
         </div>
         {currentlyVisible}
       </React.Fragment>
