@@ -15,6 +15,14 @@ function MarketTable(props) {
     tableLayout: "auto"
   }
 
+  const tableHeaderDiv = {
+    width: "60vw",
+    height: "6vh",
+    margin: "auto",
+    border: "1px solid black",
+    textAlign: "center",
+  }
+
   function filterLocation(structureArray, locationID) {
     let result = structureArray.filter(structure => structure.station_id === locationID);
     let resultHolder = (result[0] || {"name": "TTT"});
@@ -46,59 +54,69 @@ function MarketTable(props) {
 
   if (props.sellOrders.length > 0) {
     sellTable = 
-      <div style={tableDiv}>
-        <table>
-          <thead>
-            <tr>
-              <th onClick={() => props.sortSell("volume_remain")}>Quantity</th>
-              <th onClick={() => props.sortSell("price")}>Price</th>
-              <th onClick={props.addStationNameToOrder}>Location</th>
-              <th>Expires In</th>
-            </tr>
-          </thead>
-          <tbody>
-            {props.sellOrders.map((order, index) => 
-              <tr key={index}>
-                <td>{order.volume_remain}</td>
-                <td>{order.price}</td>
-                <td>{order.station || filterLocation(props.structureArray, order.location_id)}</td>
-                <td>{timeifier(order.issued, order.duration)}</td>
+      <React.Fragment>
+        <div style={tableHeaderDiv}>
+          <h2>I Should be here</h2>
+        </div>
+        <div style={tableDiv}>
+          <table>
+            <thead>
+              <tr>
+                <th onClick={() => props.sortSell("volume_remain")}>Quantity</th>
+                <th onClick={() => props.sortSell("price")}>Price</th>
+                <th onClick={props.addStationNameToOrder}>Location</th>
+                <th>Expires In</th>
               </tr>
-            )}
-          </tbody>
-        </table>
-      </div>;
+            </thead>
+            <tbody>
+              {props.sellOrders.map((order, index) => 
+                <tr key={index}>
+                  <td>{order.volume_remain}</td>
+                  <td>{order.price}</td>
+                  <td>{order.station || filterLocation(props.structureArray, order.location_id)}</td>
+                  <td>{timeifier(order.issued, order.duration)}</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </React.Fragment>
   } else {
     sellTable = "no sell orders"
   }
   if (props.buyOrders.length > 0) {
     buyTable = 
-    <div style={tableDiv}>
-        <table>
-          <thead>
-            <tr>
-              <th onClick={() => props.sortBuy("volume_remain")}>Quantity</th>
-              <th onClick={() => props.sortBuy("price")}>Price</th>
-              <th>Location</th>
-              <th onClick={() => props.sortBuy("range")}>Range</th>
-              <th>Min Volume</th>
-              <th>Expires In</th>
-            </tr>
-          </thead>
-          <tbody>
-            {props.buyOrders.map((order, index) => 
-              <tr key={index}>
-                <td>{order.volume_remain}</td>
-                <td>{order.price}</td>
-                <td>{props.isLoaded ? filterLocation(props.structureArray, order.location_id) : "Loading..."}</td>
-                <td>{order.range}</td>
-                <td>{order.min_volume}</td>
-                <td>{timeifier(order.issued, order.duration)}</td>
+      <React.Fragment>
+        <div style={tableHeaderDiv}>
+          <h2>I Should be here</h2>
+        </div>
+        <div style={tableDiv}>
+          <table>
+            <thead>
+              <tr>
+                <th onClick={() => props.sortBuy("volume_remain")}>Quantity</th>
+                <th onClick={() => props.sortBuy("price")}>Price</th>
+                <th>Location</th>
+                <th onClick={() => props.sortBuy("range")}>Range</th>
+                <th>Min Volume</th>
+                <th>Expires In</th>
               </tr>
-            )}
-          </tbody>
-        </table>
-      </div>;
+            </thead>
+            <tbody>
+              {props.buyOrders.map((order, index) => 
+                <tr key={index}>
+                  <td>{order.volume_remain}</td>
+                  <td>{order.price}</td>
+                  <td>{props.isLoaded ? filterLocation(props.structureArray, order.location_id) : "Loading..."}</td>
+                  <td>{order.range}</td>
+                  <td>{order.min_volume}</td>
+                  <td>{timeifier(order.issued, order.duration)}</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </React.Fragment>          
   } else {
     buyTable = "no sell orders"
   }
