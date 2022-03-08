@@ -67,6 +67,7 @@ function MarketTable(props) {
                 <th onClick={() => props.sortSell("price")}>Price</th>
                 <th onClick={() => props.sortSell("station")}>Location</th>
                 <th>Expires In</th>
+                <th>Jumps away</th>
               </tr>
             </thead>
             <tbody>
@@ -76,6 +77,7 @@ function MarketTable(props) {
                   <td>{order.price}</td>
                   <td>{order.station || filterLocation(props.structureArray, order.location_id)}</td>
                   <td>{timeifier(order.issued, order.duration)}</td>
+                  <td>{props.getTravelRoute(props.startSystem, order.system_id)}</td>
                 </tr>
               )}
             </tbody>

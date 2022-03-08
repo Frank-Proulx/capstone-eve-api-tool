@@ -22,7 +22,8 @@ class MarketControl extends React.Component {
       isLoaded: false,
       buyOrders: [],
       sellOrders: [],
-      structureArray: []
+      structureArray: [],
+      startSystem: null
     };
   }
 
@@ -32,7 +33,11 @@ class MarketControl extends React.Component {
     event.preventDefault();
     let region = event.target.regionList.value;
     let item = event.target.item.value;
+    let system = parseInt(event.target.system.value)
     this.getItemId(region, item);
+    this.setState({
+      startSystem: system
+    })
     setTimeout(this.addStationNameToOrder, 1500);
     setTimeout(this.accountForCitadels, 2500);
   }
@@ -92,6 +97,26 @@ class MarketControl extends React.Component {
         error
       });
     });
+  }
+
+  getTravelRoute = (startSystem, endSystem) => {
+    if (startSystem && (startSystem !== endSystem)) {
+      fetch(`https://esi.evetech.net/latest/route/${startSystem}/${endSystem}/?datasource=tranquility&flag=shortest
+      `)
+    .then(response => response.json())
+    .then(
+      (jsonifiedResponse) => {
+        console.log(jsonifiedResponse)
+        return jsonifiedResponse.length
+      })
+      .catch((error) => {
+        this.setState({
+          error
+        });
+      });
+    } else {
+      return "0"
+    }
   }
 
   sortSell = (propToSort) => {
@@ -205,6 +230,10 @@ class MarketControl extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <input 
             type='text'
+            name='system'
+            placeholder='Start System (optional)' />
+            <input 
+            type='text'
             name='item'
             placeholder='Item Name' />
             <select name="regionList" id="regionList">
@@ -222,7 +251,9 @@ class MarketControl extends React.Component {
           isLoaded={this.state.isLoaded} 
           addStationNameToOrder={this.addStationNameToOrder}
           sortSell={this.sortSell} 
-          sortBuy={this.sortBuy} />
+          sortBuy={this.sortBuy} 
+          getTravelRoute={this.getTravelRoute} 
+          startSystem={this.state.startSystem} />
         {/* <p>{console.log(this.state.buyOrders)}</p> */}
         {/* <p>{console.log(this.state.sellOrders)}</p> */}
         {/* <p>{console.log(this.state.structureArray)}</p> */}
