@@ -22,6 +22,7 @@ class MarketControl extends React.Component {
     let region = event.target.regionList.value;
     let item = event.target.item.value;
     this.getItemId(region, item);
+    setTimeout(this.addStationNameToOrder, 1000);
   }
 
   searchStations = (locationArray) => {

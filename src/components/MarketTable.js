@@ -65,7 +65,7 @@ function MarketTable(props) {
               <tr>
                 <th onClick={() => props.sortSell("volume_remain")}>Quantity</th>
                 <th onClick={() => props.sortSell("price")}>Price</th>
-                <th onClick={props.addStationNameToOrder}>Location</th>
+                <th onClick={() => props.sortSell("station")}>Location</th>
                 <th>Expires In</th>
               </tr>
             </thead>
@@ -97,9 +97,9 @@ function MarketTable(props) {
               <tr>
                 <th onClick={() => props.sortBuy("volume_remain")}>Quantity</th>
                 <th onClick={() => props.sortBuy("price")}>Price</th>
-                <th>Location</th>
+                <th onClick={() => props.sortBuy("station")}>Location</th>
                 <th onClick={() => props.sortBuy("range")}>Range</th>
-                <th>Min Volume</th>
+                <th onClick={() => props.sortBuy("min_volume")}>Min Volume</th>
                 <th>Expires In</th>
               </tr>
             </thead>
@@ -108,7 +108,7 @@ function MarketTable(props) {
                 <tr key={index}>
                   <td>{order.volume_remain}</td>
                   <td>{order.price}</td>
-                  <td>{props.isLoaded ? filterLocation(props.structureArray, order.location_id) : "Loading..."}</td>
+                  <td>{order.station || filterLocation(props.structureArray, order.location_id)}</td>
                   <td>{order.range}</td>
                   <td>{order.min_volume}</td>
                   <td>{timeifier(order.issued, order.duration)}</td>
