@@ -17,8 +17,12 @@ td, th {
   padding: 5px;
 }
 
-table {
+/* table {
   margin: 0;
+} */
+
+h1 {
+  text-align: center;
 }
 
 /* table {

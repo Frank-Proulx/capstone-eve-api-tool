@@ -161,7 +161,6 @@ class MarketControl extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h1>{this.state.regions[0].name}</h1>
         <form onSubmit={this.handleSubmit}>
           <input 
           type='text'
