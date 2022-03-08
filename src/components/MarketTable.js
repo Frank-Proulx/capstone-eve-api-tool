@@ -18,9 +18,10 @@ function MarketTable(props) {
   const tableHeaderDiv = {
     width: "60vw",
     height: "6vh",
-    margin: "auto",
+    margin: "0 auto",
     border: "1px solid black",
     textAlign: "center",
+    padding: "0 0 4px 0",
   }
 
   function filterLocation(structureArray, locationID) {
@@ -82,7 +83,7 @@ function MarketTable(props) {
         </div>
       </React.Fragment>
   } else {
-    sellTable = "no sell orders"
+    sellTable = ""
   }
   if (props.buyOrders.length > 0) {
     buyTable = 
@@ -118,7 +119,7 @@ function MarketTable(props) {
         </div>
       </React.Fragment>          
   } else {
-    buyTable = "no sell orders"
+    buyTable = ""
   }
   return(
     <React.Fragment>

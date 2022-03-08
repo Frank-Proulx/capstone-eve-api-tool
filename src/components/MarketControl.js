@@ -159,20 +159,28 @@ class MarketControl extends React.Component {
   }
 
   render() {
+
+    const searchStyle = {
+      width: "26vw",
+      margin: "0 auto"
+    }
+
     return (
       <React.Fragment>
-        <form onSubmit={this.handleSubmit}>
-          <input 
-          type='text'
-          name='item'
-          placeholder='Item Name' />
-          <select name="regionList" id="regionList">
-          {this.state.regions.map((region, index) =>
-            <option value={region.id} key={index}>{region.name}</option>
-            )}
-          </select>
-          <button type="submit">Search</button>
-        </form>
+        <div style={searchStyle}>
+          <form onSubmit={this.handleSubmit}>
+            <input 
+            type='text'
+            name='item'
+            placeholder='Item Name' />
+            <select name="regionList" id="regionList">
+            {this.state.regions.map((region, index) =>
+              <option value={region.id} key={index}>{region.name}</option>
+              )}
+            </select>
+            <button type="submit">Search</button>
+          </form>
+        </div>
         <MarketTable 
           sellOrders={this.state.sellOrders}
           buyOrders={this.state.buyOrders} 
