@@ -6,7 +6,17 @@ class MarketControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      regions: regions,
+      regions: regions.sort((a,b) => {
+        let sortA = a.name;
+        let sortB = b.name;
+        if (sortA < sortB) {
+          return -1;
+        } else if (sortA > sortB) {
+          return 1;
+        } else {
+          return 0;
+        }
+      }),
       error: null,
       isLoaded: false,
       buyOrders: [],
