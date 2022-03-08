@@ -170,6 +170,10 @@ Will need to then make a grid that has two distinct sections for buy and sell an
 
 See route documentation here [link to doc](https://github.com/Frank-Proulx/capstone-eve-api-tool/blob/main/route-documentation.md)
 
+## Known Bugs
+
+Station name will not sort for buy orders, can't get the expires_in property to assign for sorting either.
+
 ## License
 
 [MIT](https://opensource.org/licenses/MIT)

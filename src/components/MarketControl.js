@@ -6,17 +6,18 @@ class MarketControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      regions: regions.sort((a,b) => {
-        let sortA = a.name;
-        let sortB = b.name;
-        if (sortA < sortB) {
-          return -1;
-        } else if (sortA > sortB) {
-          return 1;
-        } else {
-          return 0;
-        }
-      }),
+      regions: regions,
+      // .sort((a,b) => {
+      //   let sortA = a.name;
+      //   let sortB = b.name;
+      //   if (sortA < sortB) {
+      //     return -1;
+      //   } else if (sortA > sortB) {
+      //     return 1;
+      //   } else {
+      //     return 0;
+      //   }
+      // }),
       error: null,
       isLoaded: false,
       buyOrders: [],
@@ -32,7 +33,8 @@ class MarketControl extends React.Component {
     let region = event.target.regionList.value;
     let item = event.target.item.value;
     this.getItemId(region, item);
-    setTimeout(this.addStationNameToOrder, 1000);
+    setTimeout(this.addStationNameToOrder, 1500);
+    setTimeout(this.accountForCitadels, 2500);
   }
 
   searchStations = (locationArray) => {
@@ -165,7 +167,28 @@ class MarketControl extends React.Component {
       sellOrders: this.state.sellOrders.map(order => {return {...order, station: this.state.structureArray.filter(structure => structure.station_id === order.location_id)[0]["name"]}})
     })
     this.setState({
-      buyOrders: this.state.buyOrders.map(order => {return {...order, station: this.state.structureArray.filter(structure => structure.station_id === order.location_id)[0]["name"]}})
+      buyOrders: this.state.buyOrders.map(order => {return {...order, station: this.state.structureArray.filter(structure => structure.station_id === order.location_id)[0]["name"], expires_in: ((order.duration * 86400000) - ((new Date()) - (new Date(order.issued))))}})
+    })
+  }
+
+  accountForCitadels = () => {
+    this.setState({
+      buyOrders: this.state.buyOrders.map(order => {
+        if (order.location_id > 1000000000) {
+          return {...order, station: "TTT"};
+        } else {
+          return order;
+        }
+      })
+    })
+    this.setState({
+      sellOrders: this.state.sellOrders.map(order => {
+        if (order.location_id > 1000000000) {
+          return {...order, station: "TTT"};
+        } else {
+          return order;
+        }
+      })
     })
   }
 
