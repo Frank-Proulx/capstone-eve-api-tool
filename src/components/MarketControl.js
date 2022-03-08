@@ -23,23 +23,31 @@ class MarketControl extends React.Component {
       buyOrders: [],
       sellOrders: [],
       structureArray: [],
-      startSystem: null
+      startSystem: null,
+      marketSearch: false,
+      routePlotter: false
     };
   }
 
   // TTT location id = 1028858195
 
-  handleSubmit = (event) => {
+  handleMarketSearch = (event) => {
     event.preventDefault();
     let region = event.target.regionList.value;
     let item = event.target.item.value;
-    let system = parseInt(event.target.system.value)
     this.getItemId(region, item);
     this.setState({
       startSystem: system
     })
     setTimeout(this.addStationNameToOrder, 1500);
     setTimeout(this.accountForCitadels, 2500);
+  }
+
+  handleRouteSearch = (event) => {
+    event.preventDefault();
+    let startSystem = parseInt(event.target.startSystem.value)
+    let endSystem = parseInt(event.target.endSystem.value)
+    let safety = event.target.safety.value
   }
 
   searchStations = (locationArray) => {
@@ -220,44 +228,71 @@ class MarketControl extends React.Component {
 
   render() {
 
-    const searchStyle = {
+    const searchStyle1 = {
+      width: "14vw",
+      margin: "0 auto"
+    }
+
+    const searchStyle2 = {
       width: "26vw",
       margin: "0 auto"
     }
 
-    return (
+    if (this.state.marketSearch === true) {
+      currentlyVisible = 
       <React.Fragment>
-        <div style={searchStyle}>
-          <form onSubmit={this.handleSubmit}>
-            <input 
-            type='text'
-            name='system'
-            placeholder='Start System (optional)' />
+        <div style={searchStyle2}>
+          <form onSubmit={this.handleMarketSearch}>
             <input 
             type='text'
             name='item'
             placeholder='Item Name' />
             <select name="regionList" id="regionList">
-            {this.state.regions.map((region, index) =>
-              <option value={region.id} key={index}>{region.name}</option>
+              {this.state.regions.map((region, index) =>
+                <option value={region.id} key={index}>{region.name}</option>
               )}
             </select>
             <button type="submit">Search</button>
           </form>
         </div>
         <MarketTable 
-          sellOrders={this.state.sellOrders}
-          buyOrders={this.state.buyOrders} 
-          structureArray={this.state.structureArray}
-          isLoaded={this.state.isLoaded} 
-          addStationNameToOrder={this.addStationNameToOrder}
-          sortSell={this.sortSell} 
-          sortBuy={this.sortBuy} 
-          getTravelRoute={this.getTravelRoute} 
-          startSystem={this.state.startSystem} />
+        sellOrders={this.state.sellOrders}
+        buyOrders={this.state.buyOrders} 
+        structureArray={this.state.structureArray}
+        isLoaded={this.state.isLoaded} 
+        addStationNameToOrder={this.addStationNameToOrder}
+        sortSell={this.sortSell} 
+        sortBuy={this.sortBuy} 
+        getTravelRoute={this.getTravelRoute} 
+        startSystem={this.state.startSystem} />
         {/* <p>{console.log(this.state.buyOrders)}</p> */}
         {/* <p>{console.log(this.state.sellOrders)}</p> */}
         {/* <p>{console.log(this.state.structureArray)}</p> */}
+      </React.Fragment>
+    } else if (this.state.routePlotter === true){
+      currentlyVisible = 
+      <React.Fragment>
+        <form>
+          <input 
+          type='text'
+          name='startSystem'
+          placeholder='Start System' />
+          <input 
+          type='text'
+          name='endSystem'
+          placeholder='End System' />
+          <button type="submit">Search</button>
+        </form>
+      </React.Fragment>
+    }
+
+    return (
+      <React.Fragment>
+        <div style={searchStyle1}>
+          <button>Market Search</button>
+          <button>Route Plotter</button>
+        </div>
+        {currentlyVisible}
       </React.Fragment>
     );
   }

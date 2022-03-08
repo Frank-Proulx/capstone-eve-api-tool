@@ -3,6 +3,8 @@ import React from 'react';
 function MarketTable(props) {
   let sellTable;
   let buyTable;
+  let iconUrl;
+  let itemName;
   let now = new Date();
 
   const tableDiv = {
@@ -124,8 +126,22 @@ function MarketTable(props) {
   } else {
     buyTable = ""
   }
+
+  if (props.sellOrders.length > 0) {
+    iconUrl = <img src={`https://images.evetech.net/types/${props.sellOrders[0]["type_id"]}/icon`} />
+    itemName = <h2>{props.sellOrders[0]["name"]}</h2>
+  } else if (props.buyOrders.length > 0) {
+    iconUrl = <img src={`https://images.evetech.net/types/${props.buyOrders[0]["type_id"]}/icon`} width="10" />
+    itemName = <h2>{props.buyOrders[0]["name"]}</h2>
+  } else {
+    iconUrl = '';
+    itemName = '';
+  }
+
   return(
     <React.Fragment>
+      {itemName}
+      {iconUrl}
       {sellTable}
       {buyTable}
     </React.Fragment>
