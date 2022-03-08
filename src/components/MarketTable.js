@@ -6,12 +6,13 @@ function MarketTable(props) {
   let now = new Date();
 
   const tableDiv = {
-    width: "65vw",
+    width: "60vw",
     height: "30vh",
     margin: "0 auto",
     overflow: "scroll",
     border: "1px solid black",
-    textAlign: "left"
+    textAlign: "left",
+    tableLayout: "auto"
   }
 
   function filterLocation(structureArray, locationID) {
@@ -42,7 +43,7 @@ function MarketTable(props) {
     }
     return result;
   }
-  
+
   if (props.sellOrders.length > 0) {
     sellTable = 
       <div style={tableDiv}>

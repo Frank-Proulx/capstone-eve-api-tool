@@ -14,7 +14,11 @@ code {
 
 td, th {
   border: 1px solid black;
-  padding: 1px;
+  padding: 5px;
+}
+
+table {
+  margin: 0;
 }
 
 /* table {
