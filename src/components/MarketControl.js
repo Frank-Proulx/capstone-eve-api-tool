@@ -26,7 +26,8 @@ class MarketControl extends React.Component {
       structureArray: [],
       marketSearch: false,
       routePlotter: false,
-      currentRoute: []
+      currentRoute: [],
+      systemArray: []
     };
   }
 
@@ -57,10 +58,15 @@ class MarketControl extends React.Component {
 
   handleRouteSearch = (event) => {
     event.preventDefault();
-    let startSystem = parseInt(event.target.startSystem.value)
-    let endSystem = parseInt(event.target.endSystem.value)
-    let safety = event.target.safety.value
-
+    let startSystem = event.target.startSystem.value
+    let endSystem = event.target.endSystem.value
+    startSystem = this.getSystemIDs(startSystem);
+    endSystem = this.getSystemIDs(endSystem);
+    let safety = event.target.safety.value;
+    console.log(endSystem);
+    setTimeout(this.getTravelRoute(startSystem, endSystem, safety), 5000);
+    setTimeout(this.getSystemInfo(this.state.currentRoute), 10000);
+    console.log(this.state.systemArray)
   }
 
   searchStations = (locationArray) => {
@@ -83,6 +89,28 @@ class MarketControl extends React.Component {
         });
       });
       }
+    });
+  }
+
+  getSystemInfo = (currentRoute) => {
+    this.setState({
+      systemArray: []
+    })
+    currentRoute.forEach((system) => {
+      fetch(`https://esi.evetech.net/latest/universe/systems/${system}/?datasource=tranquility&language=en
+
+    `).then(response => response.json())
+    .then(
+      (jsonifiedResponse) => {
+        this.setState({
+          systemArray: this.state.systemArray.concat(jsonifiedResponse),
+        })
+      })
+      .catch((error) => {
+        this.setState({
+          error
+        });
+      });
     });
   }
 
@@ -119,8 +147,8 @@ class MarketControl extends React.Component {
     });
   }
 
-  getTravelRoute = (startSystem, endSystem, safety) => {
-    fetch(`https://esi.evetech.net/latest/route/${startSystem}/${endSystem}/?datasource=tranquility&flag=${safety}
+  getTravelRoute = (startRoute, endRoute, safety) => {
+    fetch(`https://esi.evetech.net/latest/route/${startRoute}/${endRoute}/?datasource=tranquility&flag=${safety}
     `)
   .then(response => response.json())
   .then(
@@ -128,6 +156,22 @@ class MarketControl extends React.Component {
       this.setState({
         currentRoute: jsonifiedResponse
       })
+    })
+    .catch((error) => {
+      this.setState({
+        error
+      });
+    });
+  }
+
+  getSystemIDs = (systemName) => {
+    fetch(`https://esi.evetech.net/latest/search/?categories=solar_system&datasource=tranquility&language=en&search=${systemName}&strict=true
+    `)
+  .then(response => response.json())
+  .then(
+    (jsonifiedResponse) => {
+      console.log(jsonifiedResponse.solar_system[0])
+      return jsonifiedResponse.solar_system[0];
     })
     .catch((error) => {
       this.setState({
@@ -289,7 +333,7 @@ class MarketControl extends React.Component {
       currentlyVisible = 
       <React.Fragment>
         <div style={searchStyle3}>
-          <form>
+          <form onSubmit={this.handleRouteSearch}>
             <input 
             type='text'
             name='startSystem'
