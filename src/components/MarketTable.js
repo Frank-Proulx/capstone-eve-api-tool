@@ -28,7 +28,7 @@ function MarketTable(props) {
 
   function filterLocation(structureArray, locationID) {
     let result = structureArray.filter(structure => structure.station_id === locationID);
-    let resultHolder = (result[0] || {"name": "TTT"});
+    let resultHolder = (result[0] || {"name": "Player Owned Citadel"});
     return resultHolder.name
   }
 
@@ -68,7 +68,7 @@ function MarketTable(props) {
                 <th onClick={() => props.sortSell("volume_remain")}>Quantity</th>
                 <th onClick={() => props.sortSell("price")}>Price</th>
                 <th onClick={() => props.sortSell("station")}>Location</th>
-                <th>Expires In</th>
+                <th onClick={() => props.sortSell("issued")}>Expires In</th>
                 {/* <th>Jumps away</th> */}
               </tr>
             </thead>
@@ -104,7 +104,7 @@ function MarketTable(props) {
                 <th onClick={() => props.sortBuy("station")}>Location</th>
                 <th onClick={() => props.sortBuy("range")}>Range</th>
                 <th onClick={() => props.sortBuy("min_volume")}>Min Volume</th>
-                <th>Expires In</th>
+                <th onClick={() => props.sortSell("issued")}>Expires In</th>
               </tr>
             </thead>
             <tbody>

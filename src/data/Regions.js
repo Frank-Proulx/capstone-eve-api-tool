@@ -7,18 +7,23 @@ const regions =
   },
   {
     "category": "region",
+    "id": 10000033,
+    "name": "The Citadel"
+  },
+  {
+    "category": "region",
+    "id": 10000067,
+    "name": "Genesis"
+  },
+  {
+    "category": "region",
     "id": 10000001,
     "name": "Derelik"
   },
   {
     "category": "region",
-    "id": 10000003,
-    "name": "Vale of the Silent"
-  },
-  {
-    "category": "region",
-    "id": 10000004,
-    "name": "UUA-F4"
+    "id": 10000016,
+    "name": "Lonetrek"
   },
   {
     "category": "region",
@@ -52,6 +57,11 @@ const regions =
   },
   {
     "category": "region",
+    "id": 10000004,
+    "name": "UUA-F4"
+  },
+  {
+    "category": "region",
     "id": 10000011,
     "name": "Great Wildlands"
   },
@@ -74,11 +84,6 @@ const regions =
     "category": "region",
     "id": 10000015,
     "name": "Venal"
-  },
-  {
-    "category": "region",
-    "id": 10000016,
-    "name": "Lonetrek"
   },
   {
     "category": "region",
@@ -109,6 +114,11 @@ const regions =
     "category": "region",
     "id": 10000022,
     "name": "Stain"
+  },
+  {
+    "category": "region",
+    "id": 10000003,
+    "name": "Vale of the Silent"
   },
   {
     "category": "region",
@@ -149,11 +159,6 @@ const regions =
     "category": "region",
     "id": 10000032,
     "name": "Sinq Laison"
-  },
-  {
-    "category": "region",
-    "id": 10000033,
-    "name": "The Citadel"
   },
   {
     "category": "region",
@@ -319,11 +324,6 @@ const regions =
     "category": "region",
     "id": 10000066,
     "name": "Perrigen Falls"
-  },
-  {
-    "category": "region",
-    "id": 10000067,
-    "name": "Genesis"
   },
   {
     "category": "region",

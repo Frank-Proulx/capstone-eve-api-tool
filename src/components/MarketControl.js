@@ -34,8 +34,6 @@ class MarketControl extends React.Component {
     };
   }
 
-  // TTT location id = 1028858195
-
   displayMarket = () => {
     this.setState({
       marketSearch: true,
@@ -98,7 +96,7 @@ class MarketControl extends React.Component {
       });
       } else if (location > 1000000000) {
         this.setState({
-          structureArray: this.state.structureArray.concat({name: "TTT", station_id: location})
+          structureArray: this.state.structureArray.concat(citadels.filter(citadel => citadel.station_id === location))
         })
       }
     });
@@ -270,31 +268,8 @@ class MarketControl extends React.Component {
     })
   }
 
-  // accountForCitadels = () => {
-  //   this.setState({
-  //     buyOrders: this.state.buyOrders.map(order => {
-  //       if (order.location_id > 1000000000) {
-  //         return {...order, station: "TTT"};
-  //       } else {
-  //         return order;
-  //       }
-  //     })
-  //   })
-  //   this.setState({
-  //     sellOrders: this.state.sellOrders.map(order => {
-  //       if (order.location_id > 1000000000) {
-  //         return {...order, station: "TTT"};
-  //       } else {
-  //         return order;
-  //       }
-  //     })
-  //   })
-  // }
-
   render() {
-
     let currentlyVisible;
-
     const searchStyle1 = {
       maxWidth: "fit-content",
       margin: "0 auto"
