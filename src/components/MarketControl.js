@@ -27,7 +27,9 @@ class MarketControl extends React.Component {
       marketSearch: false,
       routePlotter: false,
       currentRoute: [],
-      systemArray: []
+      systemArray: [],
+      startSystem: null,
+      endSystem: null
     };
   }
 
@@ -58,15 +60,18 @@ class MarketControl extends React.Component {
 
   handleRouteSearch = (event) => {
     event.preventDefault();
-    let startSystem = event.target.startSystem.value
-    let endSystem = event.target.endSystem.value
-    startSystem = this.getSystemIDs(startSystem);
-    endSystem = this.getSystemIDs(endSystem);
+    let start = event.target.startSystem.value
+    let end = event.target.endSystem.value
+    // let startSystem = "startSystem";
+    // let endSystem = "endSystem";
+    this.getSystemIDs(start, "startSystem");
+    this.getSystemIDs(end, "endSystem");
     let safety = event.target.safety.value;
-    console.log(endSystem);
-    setTimeout(this.getTravelRoute(startSystem, endSystem, safety), 5000);
-    setTimeout(this.getSystemInfo(this.state.currentRoute), 10000);
-    console.log(this.state.systemArray)
+    setTimeout(() => this.getTravelRoute(this.state.startSystem, this.state.endSystem, safety), 10000);
+    setTimeout(() => this.getSystemInfo(this.state.currentRoute), 15000);
+    setTimeout(() => console.log(this.state.startSystem), 20000);
+    setTimeout(() => console.log(this.state.currentRoute), 20000);
+    setTimeout(() => console.log(this.state.systemArray), 20000);
   }
 
   searchStations = (locationArray) => {
@@ -103,7 +108,7 @@ class MarketControl extends React.Component {
     .then(
       (jsonifiedResponse) => {
         this.setState({
-          systemArray: this.state.systemArray.concat(jsonifiedResponse),
+          systemArray: this.state.systemArray.concat(jsonifiedResponse)
         })
       })
       .catch((error) => {
@@ -164,14 +169,15 @@ class MarketControl extends React.Component {
     });
   }
 
-  getSystemIDs = (systemName) => {
+  getSystemIDs = (systemName, stateToChange) => {
     fetch(`https://esi.evetech.net/latest/search/?categories=solar_system&datasource=tranquility&language=en&search=${systemName}&strict=true
     `)
   .then(response => response.json())
   .then(
     (jsonifiedResponse) => {
-      console.log(jsonifiedResponse.solar_system[0])
-      return jsonifiedResponse.solar_system[0];
+      this.setState({
+        [stateToChange]: jsonifiedResponse.solar_system[0]
+      })
     })
     .catch((error) => {
       this.setState({
