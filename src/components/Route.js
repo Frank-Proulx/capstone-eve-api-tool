@@ -11,7 +11,7 @@ function Route(props) {
 
   ((props.isLoaded > 0) && (props.isLoaded === props.currentRoute.length)) ? routeDisplay =
   props.currentRoute.map((system, index) => 
-    <li key={index}>{props.systemArray.filter(detail => detail.system_id === system)[0]["name"]} system</li>
+    <li key={index}>{props.systemArray.filter(detail => detail.system_id === system)[0]["name"]} | Security Status: {(props.systemArray.filter(detail => detail.system_id === system)[0]["security_status"]).toFixed(2)}</li>
   )
   : routeDisplay = "Enter your route above"
 

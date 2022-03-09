@@ -289,7 +289,7 @@ class MarketControl extends React.Component {
         sortBuy={this.sortBuy} 
         getTravelRoute={this.getTravelRoute} 
         startSystem={this.state.startSystem} />
-        <p>{console.log(this.state.buyOrders)}</p>
+        {/* <p>{console.log(this.state.buyOrders)}</p> */}
         {/* <p>{console.log(this.state.sellOrders)}</p> */}
         {/* <p>{console.log(this.state.structureArray)}</p> */}
       </React.Fragment>
