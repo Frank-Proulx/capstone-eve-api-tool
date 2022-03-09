@@ -65,8 +65,8 @@ class MarketControl extends React.Component {
     this.getSystemIDs(start, "startSystem");
     this.getSystemIDs(end, "endSystem");
     let safety = event.target.safety.value;
-    setTimeout(() => this.getTravelRoute(this.state.startSystem, this.state.endSystem, safety), 1000);
-    setTimeout(() => this.getSystemInfo(this.state.currentRoute), 2000);
+    setTimeout(() => this.getTravelRoute(this.state.startSystem, this.state.endSystem, safety), 500);
+    setTimeout(() => this.getSystemInfo(this.state.currentRoute), 1000);
     setTimeout(() => console.log(this.state.startSystem), 4000);
     setTimeout(() => console.log(this.state.currentRoute), 4000);
     setTimeout(() => console.log(this.state.systemArray), 4000);
@@ -110,7 +110,8 @@ class MarketControl extends React.Component {
     .then(
       (jsonifiedResponse) => {
         this.setState({
-          systemArray: this.state.systemArray.concat(jsonifiedResponse)
+          systemArray: this.state.systemArray.concat(jsonifiedResponse),
+          isLoaded: true
         })
       })
       .catch((error) => {
@@ -148,7 +149,6 @@ class MarketControl extends React.Component {
     })
     .catch((error) => {
       this.setState({
-        isLoaded: true,
         error
       });
     });
@@ -357,7 +357,10 @@ class MarketControl extends React.Component {
             <button type="submit">Search</button>
           </form>
         </div>
-        <Route />
+        <Route
+        currentRoute={this.state.currentRoute}
+        systemArray={this.state.systemArray} 
+        isLoaded={this.state.isLoaded} />
       </React.Fragment>
     }
 
