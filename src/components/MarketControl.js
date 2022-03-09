@@ -62,7 +62,8 @@ class MarketControl extends React.Component {
     event.preventDefault();
     this.setState({
       currentRoute: [],
-      systemArray: []
+      systemArray: [],
+      isLoaded: 0
     })
     let start = event.target.startSystem.value
     let end = event.target.endSystem.value
