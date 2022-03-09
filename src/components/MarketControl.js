@@ -1,5 +1,6 @@
 import React from 'react';
-import regions from './../data/Regions'
+import regions from './../data/Regions';
+import citadels from '../data/Citadels';
 import MarketTable from './MarketTable';
 import Route from './Route';
 
