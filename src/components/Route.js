@@ -3,19 +3,19 @@ import React from 'react';
 function Route(props) {
 
   let routeDisplay = "";
-  
-  function mapifier() {
-    <ul>
-      {props.currentRoute.map((system, index) => {
-        (props.isLoaded) ? <li key={index}>{(props.systemArray.filter(detail => detail.system_id === system))["name"]}</li> : "Loading...";
-      })}
-    </ul>
-  }
+
+  props.isLoaded ? routeDisplay =
+  props.currentRoute.map((system, index) => 
+    <li key={index}>{props.systemArray.filter(detail => detail.system_id === system)[0]["name"]} system</li>
+  )
+  : routeDisplay = "Enter your route above"
 
   return (
     <React.Fragment>
       <h1>Route Display</h1>
-      {routeDisplay}
+      <ul>
+        {routeDisplay}
+      </ul>
     </React.Fragment>
   );
 }
