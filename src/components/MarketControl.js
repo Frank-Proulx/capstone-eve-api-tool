@@ -3,6 +3,7 @@ import regions from './../data/Regions';
 import citadels from '../data/Citadels';
 import MarketTable from './MarketTable';
 import Route from './Route';
+import MarketSearchForm from './MarketSearchForm';
 
 class MarketControl extends React.Component {
   constructor(props) {
@@ -265,20 +266,8 @@ class MarketControl extends React.Component {
     if (this.state.marketSearch === true) {
       currentlyVisible = 
       <React.Fragment>
-        <div style={searchStyle}>
-          <form onSubmit={this.handleMarketSearch}>
-            <input 
-            type='text'
-            name='item'
-            placeholder='Item Name' />
-            <select name="regionList" id="regionList">
-              {this.state.regions.map((region, index) =>
-                <option value={region.id} key={index}>{region.name}</option>
-              )}
-            </select>
-            <button type="submit">Search</button>
-          </form>
-        </div>
+        <MarketSearchForm 
+        handleMarketSearch={this.handleMarketSearch} />
         <MarketTable 
         sellOrders={this.state.sellOrders}
         buyOrders={this.state.buyOrders} 

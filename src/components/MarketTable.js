@@ -3,8 +3,8 @@ import React from 'react';
 function MarketTable(props) {
   let sellTable = '';
   let buyTable = '';
-  let iconUrl;
-  let itemName;
+  // let iconUrl;
+  // let itemName;
   let now = new Date();
 
   const tableDiv = {
@@ -104,7 +104,7 @@ function MarketTable(props) {
                 <th onClick={() => props.sortBuy("station")}>Location</th>
                 <th onClick={() => props.sortBuy("range")}>Range</th>
                 <th onClick={() => props.sortBuy("min_volume")}>Min Volume</th>
-                <th onClick={() => props.sortSell("issued")}>Expires In</th>
+                <th onClick={() => props.sortBuy("issued")}>Expires In</th>
               </tr>
             </thead>
             <tbody>
