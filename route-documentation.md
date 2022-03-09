@@ -682,3 +682,105 @@ and the result will be:
     "name": "Tritanium"
   }
 ]
+
+# Feature mapping 
+
+**Note - Able to download json responses for including static data**
+
+## Search for item id by name(as post in universe route), return buy and sell prices for each region:
+
+**IMPORTANT - THIS MIGHT BE INFERIOR TO THE SEARCH ROUTE WHICH TAKES A STRING AND RETURNS A LIST OF ID'S**
+
+* Need input, user enters name into input (exact?)
+* Should site populate a full list of names, if so provide some kind of dropdown? (this will have too many entries, need to research autofill as they're typing)
+* Will there be some backend storage? Or will the site query all things everytime a user visits
+* Problem is that in order to search item, need to find type_id of that item using search by string post call.
+
+Process for searching item by name:
+
+Enter name "tritanium"
+Post this and receive a json object that has two keys, "characters" and "inventory_types", these search by name posts will always return categorized results from this list:
+
+* agent
+* alliance
+* character
+* constellation
+* corporation
+* faction
+* inventory_type (this is equal to type_id)
+* region
+* solar_system
+* station
+
+each category will hold an array of objects, the objects will have an "id" key and a "name" key with corresponding values. 
+
+```
+{
+    "characters": [
+        {
+            "id": 243070982,
+            "name": "Tritanium"
+        }
+    ],
+    "inventory_types": [
+        {
+            "id": 34,
+            "name": "Tritanium"
+        }
+    ]
+}
+```
+
+so will need to get result = response.inventory_types, this will typically be an array with one object, in which case it will be result[0].id, but will need to account for possibility there is more than one result **to be continued**
+
+## Search for a list (or single if strict is set to true) of id's based on an inputted string
+
+For this feature the inventory_type category will be added to the api call since we will only be dealing with items for market searches. A search for "veldspar" which has multiple variants will return for strict(true):
+```
+{
+  "inventory_type": [
+    1230
+  ]
+}
+```
+and for string(false):
+```
+{
+  "inventory_type": [
+    1230,
+    28430,
+    17470,
+    28431,
+    34420,
+    17471,
+    46689,
+    28432,
+    46705
+  ]
+}
+```
+
+In order to search for orders will need to give a region (these should be hard-coded?), as well as choose buy/sell/all, also results will be paginated so will need ability to view further pages (and sort?), if page n does not exist, response is an object, if page does exist response is an array, check subsequent pages until receive an object then stop, use spread(?) to merge pages together.
+
+Will need to then make a grid that has two distinct sections for buy and sell and in each section:
+
+* Time remaining: duration property - issued property
+* location: https://esi.evetech.net/latest/universe/stations/{location_id}/?datasource=tranquility or save this locally
+* location will be station/region/system
+* Price
+* Volume remain (and volume total?)
+* Range (region etc)
+* 
+
+"duration": 90,
+"is_buy_order": false,
+"issued": "2022-02-17T18:15:14Z",
+"location_id": 60003760,
+"min_volume": 1,
+"order_id": 6202327043,
+"price": 22990000.0,
+"range": "region",
+"system_id": 30000142,
+"type_id": 11198,
+"volume_remain": 2,
+"volume_total": 2
