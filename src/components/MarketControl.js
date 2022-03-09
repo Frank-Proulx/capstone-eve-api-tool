@@ -55,23 +55,21 @@ class MarketControl extends React.Component {
     let item = event.target.item.value;
     this.getItemId(region, item);
     setTimeout(this.addStationNameToOrder, 1500);
-    setTimeout(this.accountForCitadels, 2500);
+    // setTimeout(this.accountForCitadels, 2000);
   }
 
   handleRouteSearch = (event) => {
     event.preventDefault();
     let start = event.target.startSystem.value
     let end = event.target.endSystem.value
-    // let startSystem = "startSystem";
-    // let endSystem = "endSystem";
     this.getSystemIDs(start, "startSystem");
     this.getSystemIDs(end, "endSystem");
     let safety = event.target.safety.value;
-    setTimeout(() => this.getTravelRoute(this.state.startSystem, this.state.endSystem, safety), 10000);
-    setTimeout(() => this.getSystemInfo(this.state.currentRoute), 15000);
-    setTimeout(() => console.log(this.state.startSystem), 20000);
-    setTimeout(() => console.log(this.state.currentRoute), 20000);
-    setTimeout(() => console.log(this.state.systemArray), 20000);
+    setTimeout(() => this.getTravelRoute(this.state.startSystem, this.state.endSystem, safety), 1000);
+    setTimeout(() => this.getSystemInfo(this.state.currentRoute), 2000);
+    setTimeout(() => console.log(this.state.startSystem), 4000);
+    setTimeout(() => console.log(this.state.currentRoute), 4000);
+    setTimeout(() => console.log(this.state.systemArray), 4000);
   }
 
   searchStations = (locationArray) => {
@@ -93,6 +91,10 @@ class MarketControl extends React.Component {
           error
         });
       });
+      } else if (location > 1000000000) {
+        this.setState({
+          structureArray: this.state.structureArray.concat({name: "TTT", station_id: location})
+        })
       }
     });
   }
@@ -255,7 +257,6 @@ class MarketControl extends React.Component {
   }
 
   addStationNameToOrder = () => {
-    let now = new Date();
     this.setState({
       sellOrders: this.state.sellOrders.map(order => {return {...order, station: this.state.structureArray.filter(structure => structure.station_id === order.location_id)[0]["name"]}})
     })
@@ -264,26 +265,26 @@ class MarketControl extends React.Component {
     })
   }
 
-  accountForCitadels = () => {
-    this.setState({
-      buyOrders: this.state.buyOrders.map(order => {
-        if (order.location_id > 1000000000) {
-          return {...order, station: "TTT"};
-        } else {
-          return order;
-        }
-      })
-    })
-    this.setState({
-      sellOrders: this.state.sellOrders.map(order => {
-        if (order.location_id > 1000000000) {
-          return {...order, station: "TTT"};
-        } else {
-          return order;
-        }
-      })
-    })
-  }
+  // accountForCitadels = () => {
+  //   this.setState({
+  //     buyOrders: this.state.buyOrders.map(order => {
+  //       if (order.location_id > 1000000000) {
+  //         return {...order, station: "TTT"};
+  //       } else {
+  //         return order;
+  //       }
+  //     })
+  //   })
+  //   this.setState({
+  //     sellOrders: this.state.sellOrders.map(order => {
+  //       if (order.location_id > 1000000000) {
+  //         return {...order, station: "TTT"};
+  //       } else {
+  //         return order;
+  //       }
+  //     })
+  //   })
+  // }
 
   render() {
 
