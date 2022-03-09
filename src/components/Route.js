@@ -26,3 +26,5 @@ function Route(props) {
 }
 
 export default Route;
+
+// Make this into a map of <System /> components that hold all the info for each system

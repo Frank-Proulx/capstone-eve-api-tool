@@ -172,7 +172,9 @@ See route documentation here [link to doc](https://github.com/Frank-Proulx/capst
 
 ## Known Bugs
 
-Can't get the expires_in property to assign for sorting. Table column labels scroll, should stay fixed for sorting.
+* Tried to make a function to add an expires_in property for sorting purposes, failed, now sorting by issued date, doesn't work properly for orders with a duration less than 90 days. 
+* Table column labels scroll, should stay fixed for sorting.
+* Need to double click search if you make a second search in route planner, due to delay in setState computing.
 
 ## License
 

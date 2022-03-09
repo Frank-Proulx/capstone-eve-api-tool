@@ -42,4 +42,10 @@ input, select, button {
 
 a {
   text-decoration: underline;
+  color: lightgray;
+  font-size: 20px;
+}
+
+a:hover {
+  color: white;
 }

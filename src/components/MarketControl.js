@@ -9,17 +9,6 @@ class MarketControl extends React.Component {
     super(props);
     this.state = {
       regions: regions,
-      // .sort((a,b) => {
-      //   let sortA = a.name;
-      //   let sortB = b.name;
-      //   if (sortA < sortB) {
-      //     return -1;
-      //   } else if (sortA > sortB) {
-      //     return 1;
-      //   } else {
-      //     return 0;
-      //   }
-      // }),
       error: null,
       isLoaded: 0,
       buyOrders: [],
@@ -53,8 +42,6 @@ class MarketControl extends React.Component {
     let region = event.target.regionList.value;
     let item = event.target.item.value;
     this.getItemId(region, item);
-    setTimeout(this.addStationNameToOrder, 1500);
-    // setTimeout(this.accountForCitadels, 2000);
   }
 
   handleRouteSearch = (event) => {
@@ -69,9 +56,9 @@ class MarketControl extends React.Component {
     this.getSystemIDs(start, "startSystem");
     this.getSystemIDs(end, "endSystem");
     let safety = event.target.safety.value;
-    setTimeout(() => this.getTravelRoute(this.state.startSystem, this.state.endSystem, safety), 500);
-    setTimeout(() => this.getSystemInfo(this.state.currentRoute), 1000);
-    setTimeout(() => console.log(this.state.currentRoute), 4000);
+    setTimeout(() => this.getTravelRoute(this.state.startSystem, this.state.endSystem, safety), 400);
+    setTimeout(() => this.getSystemInfo(this.state.currentRoute), 700);
+    // setTimeout(() => console.log(this.state.currentRoute), 4000);
     setTimeout(() => console.log(this.state.systemArray), 4000);
   }
 
@@ -270,17 +257,7 @@ class MarketControl extends React.Component {
 
   render() {
     let currentlyVisible;
-    const searchStyle1 = {
-      maxWidth: "fit-content",
-      margin: "0 auto"
-    }
-
-    const searchStyle2 = {
-      maxWidth: "fit-content",
-      margin: "0 auto"
-    }
-
-    const searchStyle3 = {
+    const searchStyle = {
       maxWidth: "fit-content",
       margin: "0 auto"
     }
@@ -288,7 +265,7 @@ class MarketControl extends React.Component {
     if (this.state.marketSearch === true) {
       currentlyVisible = 
       <React.Fragment>
-        <div style={searchStyle2}>
+        <div style={searchStyle}>
           <form onSubmit={this.handleMarketSearch}>
             <input 
             type='text'
@@ -319,7 +296,7 @@ class MarketControl extends React.Component {
     } else if (this.state.routePlotter === true){
       currentlyVisible = 
       <React.Fragment>
-        <div style={searchStyle3}>
+        <div style={searchStyle}>
           <form onSubmit={this.handleRouteSearch}>
             <input 
             type='text'
@@ -346,7 +323,7 @@ class MarketControl extends React.Component {
 
     return (
       <React.Fragment>
-        <div style={searchStyle1}>
+        <div style={searchStyle}>
           <a onClick={this.displayMarket}>Market Search | </a>
           <a onClick={this.displayRoute}>Route Plotter</a>
         </div>
