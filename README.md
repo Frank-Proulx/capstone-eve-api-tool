@@ -172,7 +172,7 @@ See route documentation here [link to doc](https://github.com/Frank-Proulx/capst
 
 ## Known Bugs
 
-Station name will not sort for buy orders, can't get the expires_in property to assign for sorting either.
+Can't get the expires_in property to assign for sorting.
 
 ## License
 

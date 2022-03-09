@@ -291,7 +291,7 @@ class MarketControl extends React.Component {
     let currentlyVisible;
 
     const searchStyle1 = {
-      width: "14vw",
+      width: "15vw",
       margin: "0 auto"
     }
 
@@ -364,8 +364,8 @@ class MarketControl extends React.Component {
     return (
       <React.Fragment>
         <div style={searchStyle1}>
-          <button onClick={this.displayMarket}>Market Search</button>
-          <button onClick={this.displayRoute}>Route Plotter</button>
+          <a onClick={this.displayMarket}>Market Search | </a>
+          <a onClick={this.displayRoute}>Route Plotter</a>
         </div>
         {currentlyVisible}
       </React.Fragment>

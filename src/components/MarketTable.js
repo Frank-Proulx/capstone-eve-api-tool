@@ -9,10 +9,10 @@ function MarketTable(props) {
 
   const tableDiv = {
     width: "60vw",
-    height: "30vh",
+    height: "25vh",
     margin: "0 auto",
     overflow: "scroll",
-    border: "1px solid black",
+    border: "1px solid white",
     textAlign: "left",
     tableLayout: "auto"
   }
@@ -21,7 +21,7 @@ function MarketTable(props) {
     width: "60vw",
     height: "6vh",
     margin: "0 auto",
-    border: "1px solid black",
+    border: "1px solid white",
     textAlign: "center",
     padding: "0 0 4px 0",
   }
@@ -59,7 +59,7 @@ function MarketTable(props) {
     sellTable = 
       <React.Fragment>
         <div style={tableHeaderDiv}>
-          <h2>I Should be here</h2>
+          <h2>Sell Orders</h2>
         </div>
         <div style={tableDiv}>
           <table>
@@ -93,7 +93,7 @@ function MarketTable(props) {
     buyTable = 
       <React.Fragment>
         <div style={tableHeaderDiv}>
-          <h2>I Should be here</h2>
+          <h2>Buy Orders</h2>
         </div>
         <div style={tableDiv}>
           <table>
