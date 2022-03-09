@@ -2,9 +2,14 @@ import React from 'react';
 
 function Route(props) {
 
+  const ulStyle = {
+    maxWidth: "fit-content",
+    margin: "0 auto"
+  };
+
   let routeDisplay = "";
 
-  props.isLoaded ? routeDisplay =
+  ((props.isLoaded > 0) && (props.isLoaded === props.currentRoute.length)) ? routeDisplay =
   props.currentRoute.map((system, index) => 
     <li key={index}>{props.systemArray.filter(detail => detail.system_id === system)[0]["name"]} system</li>
   )
@@ -13,7 +18,7 @@ function Route(props) {
   return (
     <React.Fragment>
       <h1>Route Display</h1>
-      <ul>
+      <ul style={ulStyle}>
         {routeDisplay}
       </ul>
     </React.Fragment>

@@ -20,7 +20,7 @@ class MarketControl extends React.Component {
       //   }
       // }),
       error: null,
-      isLoaded: false,
+      isLoaded: 0,
       buyOrders: [],
       sellOrders: [],
       structureArray: [],
@@ -60,6 +60,10 @@ class MarketControl extends React.Component {
 
   handleRouteSearch = (event) => {
     event.preventDefault();
+    this.setState({
+      currentRoute: [],
+      systemArray: []
+    })
     let start = event.target.startSystem.value
     let end = event.target.endSystem.value
     this.getSystemIDs(start, "startSystem");
@@ -67,7 +71,6 @@ class MarketControl extends React.Component {
     let safety = event.target.safety.value;
     setTimeout(() => this.getTravelRoute(this.state.startSystem, this.state.endSystem, safety), 500);
     setTimeout(() => this.getSystemInfo(this.state.currentRoute), 1000);
-    setTimeout(() => console.log(this.state.startSystem), 4000);
     setTimeout(() => console.log(this.state.currentRoute), 4000);
     setTimeout(() => console.log(this.state.systemArray), 4000);
   }
@@ -111,7 +114,7 @@ class MarketControl extends React.Component {
       (jsonifiedResponse) => {
         this.setState({
           systemArray: this.state.systemArray.concat(jsonifiedResponse),
-          isLoaded: true
+          isLoaded: this.state.isLoaded + 1
         })
       })
       .catch((error) => {
@@ -291,17 +294,17 @@ class MarketControl extends React.Component {
     let currentlyVisible;
 
     const searchStyle1 = {
-      width: "15vw",
+      maxWidth: "fit-content",
       margin: "0 auto"
     }
 
     const searchStyle2 = {
-      width: "26vw",
+      maxWidth: "fit-content",
       margin: "0 auto"
     }
 
     const searchStyle3 = {
-      width: "31vw",
+      maxWidth: "fit-content",
       margin: "0 auto"
     }
 

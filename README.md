@@ -172,7 +172,7 @@ See route documentation here [link to doc](https://github.com/Frank-Proulx/capst
 
 ## Known Bugs
 
-Can't get the expires_in property to assign for sorting.
+Can't get the expires_in property to assign for sorting. Table column labels scroll, should stay fixed for sorting.
 
 ## License
 
