@@ -4,6 +4,7 @@ import MarketTable from './MarketTable';
 import Route from './Route';
 import MarketSearchForm from './MarketSearchForm';
 import RoutePlotterForm from './RoutePlotterForm';
+import spaceship from './../img/Eve-background.jpeg'
 
 class MarketControl extends React.Component {
   constructor(props) {
@@ -292,6 +293,9 @@ class MarketControl extends React.Component {
         systemArray={this.state.systemArray} 
         isLoaded={this.state.isLoaded} />
       </React.Fragment>
+    } else {
+      currentlyVisible =
+      <img src={spaceship} alt="internet spaceships"/>
     }
 
     return (
