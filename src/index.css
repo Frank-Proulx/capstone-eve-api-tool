@@ -16,8 +16,9 @@ code {
 
 td, th {
   border: 1px solid white;
-  padding: 5px;
-  width: 15vw;
+  padding: 3px;
+  min-width: 9vw;
+  max-width: fit-content;
 }
 
 h1 {
@@ -44,6 +45,7 @@ a {
   text-decoration: underline;
   color: lightgray;
   font-size: 20px;
+  margin: 10px;
 }
 
 a:hover {

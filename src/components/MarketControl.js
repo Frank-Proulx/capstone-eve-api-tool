@@ -297,7 +297,7 @@ class MarketControl extends React.Component {
     return (
       <React.Fragment>
         <div style={searchStyle}>
-          <a onClick={this.displayMarket}>Market Search | </a>
+          <a onClick={this.displayMarket}>Market Search</a>
           <a onClick={this.displayRoute}>Route Plotter</a>
         </div>
         {currentlyVisible}

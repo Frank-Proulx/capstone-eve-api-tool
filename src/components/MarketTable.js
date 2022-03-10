@@ -29,6 +29,10 @@ function MarketTable(props) {
     marginTop: "2vh"
   }
 
+  const nameColumnStyle = {
+    width: "32vw"
+  }
+
   function filterLocation(structureArray, locationID) {
     let result = structureArray.filter(structure => structure.station_id === locationID);
     let resultHolder = (result[0] || {"name": "Player Owned Citadel"});
@@ -70,7 +74,7 @@ function MarketTable(props) {
               <tr>
                 <th onClick={() => props.sortSell("volume_remain")}>Quantity</th>
                 <th onClick={() => props.sortSell("price")}>Price</th>
-                <th onClick={() => props.sortSell("station")}>Location</th>
+                <th onClick={() => props.sortSell("station")} style={nameColumnStyle}>Location</th>
                 <th onClick={() => props.sortSell("issued")}>Expires In</th>
                 {/* <th>Jumps away</th> */}
               </tr>
@@ -104,7 +108,7 @@ function MarketTable(props) {
               <tr>
                 <th onClick={() => props.sortBuy("volume_remain")}>Quantity</th>
                 <th onClick={() => props.sortBuy("price")}>Price</th>
-                <th onClick={() => props.sortBuy("station")}>Location</th>
+                <th onClick={() => props.sortBuy("station")} style={nameColumnStyle}>Location</th>
                 <th onClick={() => props.sortBuy("range")}>Range</th>
                 <th onClick={() => props.sortBuy("min_volume")}>Min Volume</th>
                 <th onClick={() => props.sortBuy("issued")}>Expires In</th>
