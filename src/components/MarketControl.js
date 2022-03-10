@@ -1,15 +1,14 @@
 import React from 'react';
-import regions from './../data/Regions';
 import citadels from '../data/Citadels';
 import MarketTable from './MarketTable';
 import Route from './Route';
 import MarketSearchForm from './MarketSearchForm';
+import RoutePlotterForm from './RoutePlotterForm';
 
 class MarketControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      regions: regions,
       error: null,
       isLoaded: 0,
       buyOrders: [],
@@ -43,7 +42,7 @@ class MarketControl extends React.Component {
     let region = event.target.regionList.value;
     let item = event.target.item.value;
     this.getItemId(region, item);
-    setTimeout(() => this.addStationNameToOrder(), 1500);
+    setTimeout(() => this.addStationNameToOrder(), 1000);
   }
 
   handleRouteSearch = (event) => {
@@ -286,24 +285,8 @@ class MarketControl extends React.Component {
     } else if (this.state.routePlotter === true){
       currentlyVisible = 
       <React.Fragment>
-        <div style={searchStyle}>
-          <form onSubmit={this.handleRouteSearch}>
-            <input 
-            type='text'
-            name='startSystem'
-            placeholder='Start System' />
-            <input 
-            type='text'
-            name='endSystem'
-            placeholder='End System' />
-            <select name="safety" id="safety">
-              <option value="shortest">Shortest</option>
-              <option value="secure">Secure</option>
-              <option value="insecure">Insecure</option>
-            </select>
-            <button type="submit">Search</button>
-          </form>
-        </div>
+        <RoutePlotterForm 
+        handleRouteSearch={this.handleRouteSearch} />
         <Route
         currentRoute={this.state.currentRoute}
         systemArray={this.state.systemArray} 

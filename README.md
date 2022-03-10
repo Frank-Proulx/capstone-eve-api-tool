@@ -16,9 +16,10 @@ See route documentation here [link to doc](https://github.com/Frank-Proulx/capst
 
 * Refactor
 * Add icons
-* Create separate components for the forms in MarketControl
+* Create separate components for the forms in MarketControl - Done
 * Make each system the route planner results it's own component so user can click for system detail
 * Table column heading labels scroll, should stay fixed for sorting
+* Adjust range sort in market table so it is more intuitive
 * Tried to make a function to add an expires_in property to buy/sell objects for sorting purposes, failed, now sorting by issued date, doesn't sort properly for orders with a duration less than 90 days since their expiry is not in line with other orders issued at the same time with 90 day duration, will fix this
 * Extensive design improvements
 * Use authentication to access those routes that need it
