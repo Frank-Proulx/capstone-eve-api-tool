@@ -7,7 +7,17 @@ function Route(props) {
     margin: "0 auto"
   };
 
-  let routeDisplay = "";
+  const h2Style = {
+    textAlign: "center",
+    marginBottom: "1vh"
+  }
+
+  let routeDisplay;;
+  let routeDistance;
+
+  if (props.currentRoute.length > 0) {
+    routeDistance = <h2 style={h2Style}>There are {props.currentRoute.length - 1} jumps on your journey</h2>
+  }
 
   ((props.isLoaded > 0) && (props.isLoaded === props.currentRoute.length)) ? routeDisplay =
   props.currentRoute.map((system, index) => 
@@ -18,6 +28,7 @@ function Route(props) {
   return (
     <React.Fragment>
       <h1>Route Display</h1>
+      {routeDistance}
       <ul style={ulStyle}>
         {routeDisplay}
       </ul>
