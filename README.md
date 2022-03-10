@@ -21,7 +21,10 @@ The goal of this project is to build a comprehensive out-of-game 3rd party dev t
 
 This project uses the ESI (Eve Swagger Interface) API. It contains over a hundred endpoints, some public, some needing authentication with a character's account, with data pulled directly from the game's database. I started with a market interface for planning trading, buying or selling without having to be in game. I also was able to build a route planner for plotting out the sometimes treacherous routes amongst the thousands of star systems in game.
 
-![Design for the component layout]()
+## Component Diagram
+---      
+
+![Design for the component layout](./component-diagram.png)
 
 ## Setup/Installation Requirements  
 
