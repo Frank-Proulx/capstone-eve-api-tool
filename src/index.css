@@ -37,7 +37,7 @@ input, select, button {
   height: 5vh;
   width: 10vw;
   border-radius: 5px;
-  margin: 5px;
+  margin: 12px 5px;
 }
 
 a {

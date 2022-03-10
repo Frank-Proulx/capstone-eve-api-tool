@@ -4,7 +4,7 @@ function Route(props) {
 
   const ulStyle = {
     maxWidth: "fit-content",
-    margin: "0 auto"
+    margin: "0 auto 20px auto"
   };
 
   const h2Style = {
@@ -23,11 +23,11 @@ function Route(props) {
   props.currentRoute.map((system, index) => 
     <li key={index}>{props.systemArray.filter(detail => detail.system_id === system)[0]["name"]} | Security Status: {(props.systemArray.filter(detail => detail.system_id === system)[0]["security_status"]).toFixed(2)}</li>
   )
-  : routeDisplay = "Enter your route above"
+  : routeDisplay = ""
 
   return (
     <React.Fragment>
-      <h1>Route Display</h1>
+      {/* <h1>Route Display</h1> */}
       {routeDistance}
       <ul style={ulStyle}>
         {routeDisplay}

@@ -9,12 +9,12 @@ function MarketTable(props) {
 
   const tableDiv = {
     width: "60vw",
-    height: "25vh",
+    height: "26vh",
     margin: "0 auto",
     overflow: "scroll",
     border: "1px solid white",
     textAlign: "left",
-    tableLayout: "auto"
+    tableLayout: "auto",
   }
 
   const tableHeaderDiv = {
@@ -24,6 +24,9 @@ function MarketTable(props) {
     border: "1px solid white",
     textAlign: "center",
     padding: "0 0 4px 0",
+    backgroundColor: "#c4c4c4",
+    color: "#151515",
+    marginTop: "2vh"
   }
 
   function filterLocation(structureArray, locationID) {
