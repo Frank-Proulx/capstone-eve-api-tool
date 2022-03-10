@@ -12,6 +12,10 @@ Research and planning log located here [link to doc](https://github.com/Frank-Pr
 
 See route documentation here [link to doc](https://github.com/Frank-Proulx/capstone-eve-api-tool/blob/main/route-documentation.md)
 
+# App process documentation
+
+There is a simplified breakdown of the process used to retrieve the displayed info here [link to doc](https://github.com/Frank-Proulx/capstone-eve-api-tool/blob/main/api-process.md)
+
 ## Stretch Goals
 
 * Refactor

@@ -21,6 +21,19 @@ td, th {
   max-width: fit-content;
 }
 
+/* trying to divorce the headers so they don't scroll */
+/* thead {
+  position: absolute;
+  width: 60vw;
+  margin: 0 auto;
+  height: 2vh;
+  padding-bottom: 50px;
+}
+
+table {
+  margin-top: 4vh;
+} */
+
 h1 {
   text-align: center;
 }
@@ -45,7 +58,7 @@ a {
   text-decoration: underline;
   color: lightgray;
   font-size: 20px;
-  margin: 10px;
+  margin: 8px;
 }
 
 a:hover {

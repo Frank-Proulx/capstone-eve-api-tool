@@ -4,7 +4,7 @@ function Header() {
 
   const headerStyle = {
     fontSize: "50px",
-    margin: "25px"
+    margin: "22px"
   }
 
   return (
