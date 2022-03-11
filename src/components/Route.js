@@ -13,7 +13,7 @@ function Route(props) {
   }
 
   const routeContainer = {
-    backgroundColor: "rgba(0, 0, 0, 0.3)",
+    backgroundColor: "rgba(0, 0, 0, 0.4)",
     margin: "0 auto 20px auto",
     maxWidth: "fit-content",
     padding: "1rem"
