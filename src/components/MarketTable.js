@@ -15,11 +15,13 @@ function MarketTable(props) {
     border: "1px solid white",
     textAlign: "left",
     tableLayout: "auto",
+    backgroundColor: "rgba(0, 0, 0, 0.8)",
+    color: "white"
   }
 
   const tableHeaderDiv = {
     width: "60vw",
-    height: "6vh",
+    height: "5vh",
     margin: "0 auto",
     border: "1px solid white",
     textAlign: "center",

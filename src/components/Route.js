@@ -3,13 +3,20 @@ import React from 'react';
 function Route(props) {
 
   const ulStyle = {
-    maxWidth: "fit-content",
-    margin: "0 auto 20px auto"
+    color: "white"
   };
 
   const h2Style = {
     textAlign: "center",
-    marginBottom: "1vh"
+    marginBottom: "1vh",
+    color: "white"
+  }
+
+  const routeContainer = {
+    backgroundColor: "rgba(0, 0, 0, 0.3)",
+    margin: "0 auto 20px auto",
+    maxWidth: "fit-content",
+    padding: "1rem"
   }
 
   let routeDisplay;;
@@ -27,11 +34,12 @@ function Route(props) {
 
   return (
     <React.Fragment>
-      {/* <h1>Route Display</h1> */}
-      {routeDistance}
-      <ul style={ulStyle}>
-        {routeDisplay}
-      </ul>
+      <div style={routeContainer}>
+        {routeDistance}
+        <ul style={ulStyle}>
+          {routeDisplay}
+        </ul>
+      </div>
     </React.Fragment>
   );
 }

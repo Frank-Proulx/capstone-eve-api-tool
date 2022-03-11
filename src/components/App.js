@@ -1,12 +1,26 @@
 import React from 'react';
 import Header from './Header';
 import MarketControl from './MarketControl';
+import spaceship from './../img/Eve-background.jpeg'
+
 
 function App() {
+
+  const backgroundImage = {
+    backgroundImage: `url(${spaceship})`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center center",
+    minHeight: "100vh",
+    // width: "auto"
+  }
+
   return (
     <React.Fragment>
-      <Header />
-      <MarketControl />
+      <div style={backgroundImage}>
+        <Header />
+        <MarketControl />
+      </div>
     </React.Fragment>
   );
 }

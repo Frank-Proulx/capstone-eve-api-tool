@@ -279,9 +279,6 @@ class MarketControl extends React.Component {
         sortBuy={this.sortBuy} 
         getTravelRoute={this.getTravelRoute} 
         startSystem={this.state.startSystem} />
-        {/* <p>{console.log(this.state.buyOrders)}</p> */}
-        {/* <p>{console.log(this.state.sellOrders)}</p> */}
-        {/* <p>{console.log(this.state.structureArray)}</p> */}
       </React.Fragment>
     } else if (this.state.routePlotter === true){
       currentlyVisible = 
@@ -293,11 +290,8 @@ class MarketControl extends React.Component {
         systemArray={this.state.systemArray} 
         isLoaded={this.state.isLoaded} />
       </React.Fragment>
-    } else {
-      currentlyVisible =
-      <img src={spaceship} alt="internet spaceships"/>
-    }
-
+    } 
+  
     return (
       <React.Fragment>
         <div style={searchStyle}>

@@ -4,7 +4,9 @@ function Header() {
 
   const headerStyle = {
     fontSize: "50px",
-    margin: "22px"
+    margin: "0 0 22px 0",
+    textAlign: "center",
+    color: "white"
   }
 
   return (
