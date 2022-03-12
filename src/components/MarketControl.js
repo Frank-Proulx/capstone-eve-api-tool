@@ -4,6 +4,7 @@ import MarketTable from './MarketTable';
 import Route from './Route';
 import MarketSearchForm from './MarketSearchForm';
 import RoutePlotterForm from './RoutePlotterForm';
+import SystemDetail from './SystemDetail';
 
 class MarketControl extends React.Component {
   constructor(props) {
@@ -21,22 +22,36 @@ class MarketControl extends React.Component {
       startSystem: null,
       endSystem: null,
       noSearchResult: null,
-      noRouteResult: null
+      noRouteResult: null,
+      selectedSystem: null
     };
   }
 
   displayMarket = () => {
     this.setState({
       marketSearch: true,
-      routePlotter: false
+      routePlotter: false,
+      selectedSystem: null
     })
   }
 
   displayRoute = () => {
     this.setState({
       marketSearch: false,
-      routePlotter: true
+      routePlotter: true,
+      selectedSystem: null
     })
+  }
+
+  selectSystem = (id) => {
+    let chosen = this.state.systemArray.filter(system => system.system_id === id)[0]
+    this.setState({
+      structureArray: [],
+      selectedSystem: chosen
+    })
+    if (chosen.hasOwnProperty("stations")) {
+      this.searchStations(chosen["stations"])
+    }
   }
 
   handleMarketSearch = (event) => {
@@ -100,7 +115,6 @@ class MarketControl extends React.Component {
     })
     currentRoute.forEach((system) => {
       fetch(`https://esi.evetech.net/latest/universe/systems/${system}/?datasource=tranquility&language=en
-
     `).then(response => response.json())
     .then(
       (jsonifiedResponse) => {
@@ -291,7 +305,12 @@ class MarketControl extends React.Component {
       fontSize: "40px"
     }
 
-    if (this.state.noSearchResult) {
+    if (this.state.selectedSystem) {
+      currentlyVisible =
+      <SystemDetail 
+      selectedSystem={this.state.selectedSystem}
+      structureArray={this.state.structureArray} />
+    } else if (this.state.noSearchResult) {
       currentlyVisible = 
       <React.Fragment>
         <MarketSearchForm 
@@ -330,7 +349,8 @@ class MarketControl extends React.Component {
         <Route
         currentRoute={this.state.currentRoute}
         systemArray={this.state.systemArray} 
-        isLoaded={this.state.isLoaded} />
+        isLoaded={this.state.isLoaded}
+        selectSystem={this.selectSystem} />
       </React.Fragment>
     } 
   

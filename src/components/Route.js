@@ -4,7 +4,9 @@ function Route(props) {
 
   const ulStyle = {
     // backgroundColor: "rgba(0, 0, 0, 0.4)",
-    // color: "white"
+    // color: "white",
+    height: "60vh",
+    overflow: "scroll"
   };
 
   const h2Style = {
@@ -29,7 +31,7 @@ function Route(props) {
 
   ((props.isLoaded > 0) && (props.isLoaded === props.currentRoute.length)) ? routeDisplay =
   props.currentRoute.map((system, index) => 
-    <li key={index} className="list-group-item">{props.systemArray.filter(detail => detail.system_id === system)[0]["name"]} | Security Status: {(props.systemArray.filter(detail => detail.system_id === system)[0]["security_status"]).toFixed(2)}</li>
+    <li key={index} className="list-group-item" onClick={() => props.selectSystem(system)}>{props.systemArray.filter(detail => detail.system_id === system)[0]["name"]} | Security Status: {(props.systemArray.filter(detail => detail.system_id === system)[0]["security_status"]).toFixed(2)}</li>
   )
   : routeDisplay = null;
 
