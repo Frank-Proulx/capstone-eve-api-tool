@@ -63,7 +63,7 @@ function MarketTable(props) {
     }
     return result;
   }
-
+  
   if (props.sellOrders.length > 0) {
     sellTable = 
       <React.Fragment>

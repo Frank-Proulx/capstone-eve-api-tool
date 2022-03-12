@@ -3,6 +3,7 @@ import React from 'react';
 function Route(props) {
 
   const ulStyle = {
+    backgroundColor: "rgba(0, 0, 0, 0.4)",
     color: "white"
   };
 
@@ -13,8 +14,8 @@ function Route(props) {
   }
 
   const routeContainer = {
-    backgroundColor: "rgba(0, 0, 0, 0.4)",
-    margin: "0 auto 20px auto",
+    // backgroundColor: "rgba(0, 0, 0, 0.4)",
+    margin: "0 auto",
     maxWidth: "fit-content",
     padding: "1rem"
   }
@@ -30,7 +31,7 @@ function Route(props) {
   props.currentRoute.map((system, index) => 
     <li key={index}>{props.systemArray.filter(detail => detail.system_id === system)[0]["name"]} | Security Status: {(props.systemArray.filter(detail => detail.system_id === system)[0]["security_status"]).toFixed(2)}</li>
   )
-  : routeDisplay = ""
+  : routeDisplay = null;
 
   return (
     <React.Fragment>

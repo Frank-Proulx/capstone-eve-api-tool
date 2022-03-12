@@ -4,7 +4,6 @@ import MarketTable from './MarketTable';
 import Route from './Route';
 import MarketSearchForm from './MarketSearchForm';
 import RoutePlotterForm from './RoutePlotterForm';
-import spaceship from './../img/Eve-background.jpeg'
 
 class MarketControl extends React.Component {
   constructor(props) {
@@ -20,7 +19,8 @@ class MarketControl extends React.Component {
       currentRoute: [],
       systemArray: [],
       startSystem: null,
-      endSystem: null
+      endSystem: null,
+      noSearchResult: null
     };
   }
 
@@ -40,6 +40,9 @@ class MarketControl extends React.Component {
 
   handleMarketSearch = (event) => {
     event.preventDefault();
+    this.setState({
+      noSearchResult: null
+    })
     let region = event.target.regionList.value;
     let item = event.target.item.value;
     this.getItemId(region, item);
@@ -119,7 +122,13 @@ class MarketControl extends React.Component {
     `).then(response => response.json())
     .then(
       (jsonifiedResponse) => {
-        this.makeApiCall(region, jsonifiedResponse.inventory_type[0]);
+        if (jsonifiedResponse.hasOwnProperty("inventory_type")) {
+          this.makeApiCall(region, jsonifiedResponse.inventory_type[0]);
+        } else {
+          this.setState({
+            noSearchResult: `Sorry, ${item} does not exist in Eve`
+          })
+        }
       })
       .catch((error) => {
         this.setState({
@@ -264,7 +273,22 @@ class MarketControl extends React.Component {
       margin: "0 auto"
     }
 
-    if (this.state.marketSearch === true) {
+    const badSearch = {
+      margin: "30px auto",
+      color: "white",
+      backgroundColor: "rgba(0, 0, 0, 0.1)",
+      maxWidth: "fit-content",
+      fontSize: "40px"
+    }
+
+    if (this.state.noSearchResult) {
+      currentlyVisible = 
+      <React.Fragment>
+        <MarketSearchForm 
+        handleMarketSearch={this.handleMarketSearch} />
+        <h3 style={badSearch}>{this.state.noSearchResult}</h3>
+      </React.Fragment>
+    } else if (this.state.marketSearch === true) {
       currentlyVisible = 
       <React.Fragment>
         <MarketSearchForm 
@@ -278,7 +302,8 @@ class MarketControl extends React.Component {
         sortSell={this.sortSell} 
         sortBuy={this.sortBuy} 
         getTravelRoute={this.getTravelRoute} 
-        startSystem={this.state.startSystem} />
+        startSystem={this.state.startSystem}
+        noSearchResult={this.state.noSearchResult} />
       </React.Fragment>
     } else if (this.state.routePlotter === true){
       currentlyVisible = 

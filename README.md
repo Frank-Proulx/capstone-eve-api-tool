@@ -35,6 +35,10 @@ This project uses the ESI (Eve Swagger Interface) API. It contains over a hundre
 * Type `npm install` in the terminal to install all dependencies.  
 * Type `npm run start` into the terminal to start a server displaying the page on `http://localhost:3000/` in your browser.
 
+# Link to Github pages:
+
+[Eve Online Interface](https://frank-proulx.github.io/capstone-eve-api-tool/)
+
 # Research & Planning log
 
 Research and planning log located here [link to doc](https://github.com/Frank-Proulx/capstone-eve-api-tool/blob/main/research-log.md)
