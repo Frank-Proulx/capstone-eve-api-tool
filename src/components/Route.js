@@ -3,8 +3,8 @@ import React from 'react';
 function Route(props) {
 
   const ulStyle = {
-    backgroundColor: "rgba(0, 0, 0, 0.4)",
-    color: "white"
+    // backgroundColor: "rgba(0, 0, 0, 0.4)",
+    // color: "white"
   };
 
   const h2Style = {
@@ -17,7 +17,7 @@ function Route(props) {
     // backgroundColor: "rgba(0, 0, 0, 0.4)",
     margin: "0 auto",
     maxWidth: "fit-content",
-    padding: "1rem"
+    // padding: "1rem"
   }
 
   let routeDisplay;;
@@ -29,7 +29,7 @@ function Route(props) {
 
   ((props.isLoaded > 0) && (props.isLoaded === props.currentRoute.length)) ? routeDisplay =
   props.currentRoute.map((system, index) => 
-    <li key={index}>{props.systemArray.filter(detail => detail.system_id === system)[0]["name"]} | Security Status: {(props.systemArray.filter(detail => detail.system_id === system)[0]["security_status"]).toFixed(2)}</li>
+    <li key={index} className="list-group-item">{props.systemArray.filter(detail => detail.system_id === system)[0]["name"]} | Security Status: {(props.systemArray.filter(detail => detail.system_id === system)[0]["security_status"]).toFixed(2)}</li>
   )
   : routeDisplay = null;
 
@@ -37,7 +37,7 @@ function Route(props) {
     <React.Fragment>
       <div style={routeContainer}>
         {routeDistance}
-        <ul style={ulStyle}>
+        <ul style={ulStyle} className="list-group">
           {routeDisplay}
         </ul>
       </div>

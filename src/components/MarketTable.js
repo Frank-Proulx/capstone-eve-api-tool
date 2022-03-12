@@ -8,24 +8,24 @@ function MarketTable(props) {
   let now = new Date();
 
   const tableDiv = {
-    width: "60vw",
-    height: "26vh",
+    width: "80vw",
+    height: "28vh",
     margin: "0 auto",
     overflow: "scroll",
-    border: "1px solid white",
-    textAlign: "left",
-    tableLayout: "auto",
-    backgroundColor: "rgba(0, 0, 0, 0.8)",
-    color: "white"
+    // border: "1px solid white",
+    // textAlign: "left",
+    // tableLayout: "auto",
+    // backgroundColor: "rgba(0, 0, 0, 0.8)",
+    // color: "white"
   }
 
   const tableHeaderDiv = {
-    width: "60vw",
-    height: "5vh",
+    width: "80vw",
+    height: "7vh",
     margin: "0 auto",
     border: "1px solid white",
     textAlign: "center",
-    padding: "0 0 4px 0",
+    padding: "0 0 8px 0",
     backgroundColor: "#c4c4c4",
     color: "#151515",
     marginTop: "2vh"
@@ -71,7 +71,7 @@ function MarketTable(props) {
           <h2>Sell Orders</h2>
         </div>
         <div style={tableDiv}>
-          <table>
+          <table className="table table-dark table-striped">
             <thead>
               <tr>
                 <th onClick={() => props.sortSell("volume_remain")}>Quantity</th>
@@ -105,7 +105,7 @@ function MarketTable(props) {
           <h2>Buy Orders</h2>
         </div>
         <div style={tableDiv}>
-          <table>
+          <table className="table table-dark table-striped">
             <thead>
               <tr>
                 <th onClick={() => props.sortBuy("volume_remain")}>Quantity</th>
