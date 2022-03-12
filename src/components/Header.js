@@ -3,10 +3,11 @@ import React from 'react';
 function Header() {
 
   const headerStyle = {
-    fontSize: "50px",
-    margin: "0 0 22px 0",
+    fontSize: "60px",
+    margin: "0 0 10px 0",
     textAlign: "center",
-    color: "white"
+    color: "white",
+    paddingTop: "20px"
   }
 
   return (

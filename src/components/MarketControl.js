@@ -65,8 +65,6 @@ class MarketControl extends React.Component {
     let safety = event.target.safety.value;
     setTimeout(() => this.getTravelRoute(this.state.startSystem, this.state.endSystem, safety), 400);
     setTimeout(() => this.getSystemInfo(this.state.currentRoute), 700);
-    // setTimeout(() => console.log(this.state.currentRoute), 4000);
-    setTimeout(() => console.log(this.state.systemArray), 4000);
   }
 
   searchStations = (locationArray) => {

@@ -12,7 +12,6 @@ function App() {
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center center",
     minHeight: "100vh",
-    // width: "auto"
   }
 
   return (

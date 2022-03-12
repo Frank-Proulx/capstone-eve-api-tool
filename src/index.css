@@ -21,19 +21,6 @@ td, th {
   max-width: fit-content;
 }
 
-/* trying to divorce the headers so they don't scroll */
-/* thead {
-  position: absolute;
-  width: 60vw;
-  margin: 0 auto;
-  height: 2vh;
-  padding-bottom: 50px;
-}
-
-table {
-  margin-top: 4vh;
-} */
-
 h2 {
   margin: 0;
   padding: 10px;
@@ -50,17 +37,29 @@ input, select, button {
   margin: 12px 5px;
 }
 
-a {
-  text-decoration: underline;
+a, a:not([href]):not([class]) {
   color: white;
   font-size: 20px;
   margin: 8px;
 }
 
-a:hover {
+a:not([href]):not([class]):hover {
   color: #2eb2e6;
+  cursor: pointer;
 }
 
 div:empty {
   padding: 0;
+}
+
+.form-control, .form-select {
+  display: inline;
+}
+
+.search {
+  width: 35%;
+}
+
+.route {
+  width: 24%;
 }
