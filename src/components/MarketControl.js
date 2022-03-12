@@ -20,7 +20,8 @@ class MarketControl extends React.Component {
       systemArray: [],
       startSystem: null,
       endSystem: null,
-      noSearchResult: null
+      noSearchResult: null,
+      noRouteResult: null
     };
   }
 
@@ -52,6 +53,7 @@ class MarketControl extends React.Component {
   handleRouteSearch = (event) => {
     event.preventDefault();
     this.setState({
+      noRouteResult: null,
       currentRoute: [],
       systemArray: [],
       isLoaded: 0
@@ -178,9 +180,19 @@ class MarketControl extends React.Component {
   .then(response => response.json())
   .then(
     (jsonifiedResponse) => {
-      this.setState({
-        [stateToChange]: jsonifiedResponse.solar_system[0]
-      })
+      if (jsonifiedResponse.hasOwnProperty("solar_system")) {
+        this.setState({
+          [stateToChange]: jsonifiedResponse.solar_system[0]
+        })
+      } else if (this.state.noRouteResult) {
+        this.setState({
+          noRouteResult: this.state.noRouteResult.concat(` or ${systemName}`)
+        })
+      } else {
+        this.setState({
+          noRouteResult: `Sorry, no results found for ${systemName}`
+        })
+      }
     })
     .catch((error) => {
       this.setState({
@@ -287,6 +299,13 @@ class MarketControl extends React.Component {
         <MarketSearchForm 
         handleMarketSearch={this.handleMarketSearch} />
         <h3 style={badSearch}>{this.state.noSearchResult}</h3>
+      </React.Fragment>
+    } else if (this.state.noRouteResult) {
+      currentlyVisible = 
+      <React.Fragment>
+        <RoutePlotterForm 
+        handleRouteSearch={this.handleRouteSearch} />
+        <h3 style={badSearch}>{this.state.noRouteResult}</h3>
       </React.Fragment>
     } else if (this.state.marketSearch === true) {
       currentlyVisible = 
