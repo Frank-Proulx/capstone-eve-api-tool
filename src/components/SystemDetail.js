@@ -11,11 +11,14 @@ function SystemDetail(props) {
   }
 
   const systemInfoDiv = {
-    maxWidth: "fit-content",
+    width: "50vw",
+    height: "50vh",
+    overflow: "scroll",
     margin: "0 auto",
     color: "white",
-    paddingTop: "20px",
-    fontSize: "40px"
+    padding: "20px",
+    backgroundColor: "rgba(0, 0, 0, 0.3)"
+    // fontSize: "40px"
   }
 
   let stations;
@@ -30,6 +33,7 @@ function SystemDetail(props) {
       <h1 style={headerStyle}>System Details</h1>
       <div style={systemInfoDiv}>
         <h3>System Name: {props.selectedSystem["name"]}</h3>
+        <hr/>
         {stations}
       </div>
     </React.Fragment>
