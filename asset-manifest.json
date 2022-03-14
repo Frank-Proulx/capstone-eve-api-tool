@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/capstone-eve-api-tool/static/css/main.44f4e13e.css",
-    "main.js": "/capstone-eve-api-tool/static/js/main.4ef88b38.js",
+    "main.css": "/capstone-eve-api-tool/static/css/main.093014cd.css",
+    "main.js": "/capstone-eve-api-tool/static/js/main.251c902f.js",
     "static/js/787.f3b46c17.chunk.js": "/capstone-eve-api-tool/static/js/787.f3b46c17.chunk.js",
     "static/media/Eve-background.jpeg": "/capstone-eve-api-tool/static/media/Eve-background.e8bc397039d05426b714.jpeg",
     "index.html": "/capstone-eve-api-tool/index.html",
-    "main.44f4e13e.css.map": "/capstone-eve-api-tool/static/css/main.44f4e13e.css.map",
-    "main.4ef88b38.js.map": "/capstone-eve-api-tool/static/js/main.4ef88b38.js.map",
+    "main.093014cd.css.map": "/capstone-eve-api-tool/static/css/main.093014cd.css.map",
+    "main.251c902f.js.map": "/capstone-eve-api-tool/static/js/main.251c902f.js.map",
     "787.f3b46c17.chunk.js.map": "/capstone-eve-api-tool/static/js/787.f3b46c17.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.44f4e13e.css",
-    "static/js/main.4ef88b38.js"
+    "static/css/main.093014cd.css",
+    "static/js/main.251c902f.js"
   ]
 }
