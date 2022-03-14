@@ -9,7 +9,7 @@
 * React
 * Javascript
 * JSX
-* Node.js
+* NPM
 * Postman
 * Eve Swagger Interface API
 * HTML

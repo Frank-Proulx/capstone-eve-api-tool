@@ -333,13 +333,13 @@ class MarketControl extends React.Component {
         sellOrders={this.state.sellOrders}
         buyOrders={this.state.buyOrders} 
         structureArray={this.state.structureArray}
-        isLoaded={this.state.isLoaded} 
-        addStationNameToOrder={this.addStationNameToOrder}
         sortSell={this.sortSell} 
         sortBuy={this.sortBuy} 
-        getTravelRoute={this.getTravelRoute} 
-        startSystem={this.state.startSystem}
         noSearchResult={this.state.noSearchResult} />
+        {/* isLoaded={this.state.isLoaded} 
+        addStationNameToOrder={this.addStationNameToOrder}
+        getTravelRoute={this.getTravelRoute} 
+        startSystem={this.state.startSystem} */}
       </React.Fragment>
     } else if (this.state.routePlotter === true){
       currentlyVisible = 

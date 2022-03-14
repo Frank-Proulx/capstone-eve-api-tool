@@ -12,11 +12,6 @@ function MarketTable(props) {
     height: "28vh",
     margin: "0 auto",
     overflow: "scroll",
-    // border: "1px solid white",
-    // textAlign: "left",
-    // tableLayout: "auto",
-    // backgroundColor: "rgba(0, 0, 0, 0.8)",
-    // color: "white"
   }
 
   const tableHeaderDiv = {
