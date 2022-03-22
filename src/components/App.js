@@ -2,8 +2,8 @@ import React from 'react';
 import Header from './Header';
 import MarketControl from './MarketControl';
 import spaceship from './../img/Eve-background.jpeg';
-import dead from './../img/titan-dead.png';
-import green from './../img/titans-green.png'
+import dead from './../img/titan-dead.jpg';
+import green from './../img/titan-green.jpg'
 
 function App() {
 
