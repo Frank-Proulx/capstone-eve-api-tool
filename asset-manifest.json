@@ -1,18 +1,20 @@
 {
   "files": {
     "main.css": "/capstone-eve-api-tool/static/css/main.093014cd.css",
-    "main.js": "/capstone-eve-api-tool/static/js/main.1a0433a2.js",
+    "main.js": "/capstone-eve-api-tool/static/js/main.e88f615d.js",
     "static/js/787.f3b46c17.chunk.js": "/capstone-eve-api-tool/static/js/787.f3b46c17.chunk.js",
     "static/media/Eve-background.jpeg": "/capstone-eve-api-tool/static/media/Eve-background.e8bc397039d05426b714.jpeg",
+    "static/media/punisher.png": "/capstone-eve-api-tool/static/media/punisher.a23102eeac8bfb4ef1a7.png",
     "static/media/titan-dead.jpg": "/capstone-eve-api-tool/static/media/titan-dead.b6102214d46bc39e1136.jpg",
     "static/media/titan-green.jpg": "/capstone-eve-api-tool/static/media/titan-green.629655459a00d270670f.jpg",
+    "static/media/charon.jpg": "/capstone-eve-api-tool/static/media/charon.02cf48583cd764fa0844.jpg",
     "index.html": "/capstone-eve-api-tool/index.html",
     "main.093014cd.css.map": "/capstone-eve-api-tool/static/css/main.093014cd.css.map",
-    "main.1a0433a2.js.map": "/capstone-eve-api-tool/static/js/main.1a0433a2.js.map",
+    "main.e88f615d.js.map": "/capstone-eve-api-tool/static/js/main.e88f615d.js.map",
     "787.f3b46c17.chunk.js.map": "/capstone-eve-api-tool/static/js/787.f3b46c17.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.093014cd.css",
-    "static/js/main.1a0433a2.js"
+    "static/js/main.e88f615d.js"
   ]
 }
